@@ -38,11 +38,6 @@ class DailyEating
     /**
      * @var int
      */
-    private $illness;
-
-    /**
-     * @var int
-     */
     private $dayNumber;
 
     /**
@@ -63,7 +58,6 @@ class DailyEating
         int $outsideFood,
         string $dayType,
         int $dayNumber,
-        int $illness,
         int $month,
         int $year,
         $created
@@ -73,7 +67,6 @@ class DailyEating
         $this->calorieEstimate = $calorieEstimate;
         $this->outsideFood = $outsideFood;
         $this->dayType = $dayType;
-        $this->illness = $illness;
         $this->dayNumber = $dayNumber;
         $this->month = $month;
         $this->year = $year;
@@ -138,16 +131,6 @@ class DailyEating
     public function setNote(?string $note): void
     {
         $this->note = $note;
-    }
-
-    public function getIllness(): int
-    {
-        return $this->illness;
-    }
-
-    public function setIllness(int $illness): void
-    {
-        $this->illness = $illness;
     }
 
     public function getDayNumber(): int

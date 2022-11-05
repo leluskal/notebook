@@ -1,0 +1,63 @@
+{block content}
+
+<div class="calendar-container">
+    {var $dayNumber = 1}
+    {for $row = 1; $row <= 5; $row++}
+        <div class="week-row">
+            {for $column = 1; $column <= 7; $column++}
+                {breakIf $dayNumber >= 32}
+                {var $colorClass = ''}
+                    {ifset $dailyEatingsByDayNumber[$dayNumber]}
+                        {if $dailyEatingsByDayNumber[$dayNumber]['calorie_number'] > 0}
+                            {var $colorClass = 'has-record-eating'}
+                        {/if}
+                    {/ifset}
+                    <div class="day-item {$colorClass}">
+                        <span id="day-number">
+                            <a n:href="DailyEating:edit, dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-eating-edit">
+                                {$dayNumber}.
+                            </a>
+                        </span>
+                        {ifset $dailyEatingsByDayNumber[$dayNumber]}
+                            <span {if $dailyEatingsByDayNumber[$dayNumber]['day_type'] == 'Free Day'} class="free-day"
+                                  {else} class="work-day"{/if}>
+                                  {$dailyEatingsByDayNumber[$dayNumber]['day_type']}
+                            </span>
+                            {if $dailyEatingsByDayNumber[$dayNumber]['note'] !== null}
+                                <span><i class="fas fa-pen-nib fa-xs"></i></span>
+                            {/if}
+                            <div class="eating-records-item">
+                                <span {if $dailyEatingsByDayNumber[$dayNumber]['calorie_number'] <= 1820} class="green-calories-number"
+                                    {else} class="red-calories-number"{/if}>
+                                    {if $dailyEatingsByDayNumber[$dayNumber]['calorie_number'] > 0}
+                                        {number_format($dailyEatingsByDayNumber[$dayNumber]['calorie_number'], 0, '',  ' ')} kcal
+                                    {/if}
+                                </span>
+                                {if $dailyEatingsByDayNumber[$dayNumber]['calorie_estimate'] === 1}
+                                    <span>(odhad)</span>
+                                {/if}
+                            <br>
+                            {if $dailyEatingsByDayNumber[$dayNumber]['outside_food'] === 1}
+                                 <span class="non-cooked-record">Outside Food</span>
+                            {/if}
+                            </div>
+                            {else}
+                                <a n:href="DailyEating:create, dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-eating-create">
+                                     <i class="fas fa-utensils"></i>
+                                </a>
+                        {/ifset}
+                              {ifset $bodyWeightsByDayNumber[$dayNumber]}
+                            <a n:href="DailyBodyWeight:create,  dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-weight-create weight-number">
+                                {$bodyWeightsByDayNumber[$dayNumber]} kg
+                            </a>
+                        {else}
+                            <a n:href="DailyBodyWeight:create, dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-weight-create">
+                                <i class="fas fa-weight"></i>
+                            </a>
+                        {/ifset}
+                    <span style="display: none;">{$dayNumber++}</span>
+                </div>
+            {/for}
+        </div>
+    {/for}
+</div>

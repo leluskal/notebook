@@ -25,7 +25,6 @@ class DailyEatingRepository extends BaseRepository
             (int)$row->calorie_estimate,
             (int)$row->outside_food,
             (string)$row->day_type,
-            (int)$row->illness,
             (int)$row->day_number,
             (int)$row->month,
             (int)$row->year,
@@ -55,7 +54,6 @@ class DailyEatingRepository extends BaseRepository
             (int)$row->calorie_estimate,
             (int)$row->outside_food,
             (string)$row->day_type,
-            (int)$row->illness,
             (int)$row->day_number,
             (int)$row->month,
             (int)$row->year,
@@ -82,7 +80,6 @@ class DailyEatingRepository extends BaseRepository
                 'calorie_estimate' => $row->calorie_estimate,
                 'outside_food' => $row->outside_food,
                 'day_type' => $row->day_type,
-                'illness' => $row->illness,
                 'note' => $row->note,
             ];
         }
@@ -100,7 +97,6 @@ class DailyEatingRepository extends BaseRepository
                 (int)$row->calorie_estimate,
                 (int)$row->outside_food,
                 (string)$row->day_type,
-                (int)$row->illness,
                 (int)$row->day_number,
                 (int)$row->month,
                 (int)$row->year,
