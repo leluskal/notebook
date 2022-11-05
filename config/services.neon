@@ -5,4 +5,5 @@ services:
 	- App\AdminModule\Components\Forms\Register\RegisterFormFactory
 	- App\AdminModule\Components\Forms\Login\LoginFormFactory
 	- App\Model\Authentication\UserAuthenticator
+	- App\Model\DailyBodyWeight\DailyBodyWeightRepository
 
