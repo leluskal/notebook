@@ -72,7 +72,7 @@ class LoginForm extends Control
         }
 
         $this->getPresenter()->flashMessage('You have been logged in successfully.', 'success');
-        $this->getPresenter()->redirect(':Admin:Homepage:default');
+        $this->getPresenter()->redirect(':Front:Introduction:default');
     }
 
     public function render()
