@@ -1,29 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Model\DailyEating;
+namespace App\Model\DailySleeping;
 
-class DailyEating
+class DailySleeping
 {
     /**
      * @var int
      */
     private $id;
 
-    /**
-     * @var int
-     */
-    private $calorieNumber;
+    private $timeGoToBed;
 
-    /**
-     * @var int
-     */
-    private $calorieEstimate;
-
-    /**
-     * @var int
-     */
-    private $outsideFood;
+    private $timeGetUp;
 
     /**
      * @var string
@@ -58,20 +47,18 @@ class DailyEating
     private $created;
 
     public function __construct(
-        int $calorieNumber,
-        int $calorieEstimate,
-        int $outsideFood,
+        $timeGoToBed,
+        $timeGetUp,
         string $dayType,
-        int $dayNumber,
         int $illness,
+        int $dayNumber,
         int $month,
         int $year,
         $created
     )
     {
-        $this->calorieNumber = $calorieNumber;
-        $this->calorieEstimate = $calorieEstimate;
-        $this->outsideFood = $outsideFood;
+        $this->timeGoToBed = $timeGoToBed;
+        $this->timeGetUp = $timeGetUp;
         $this->dayType = $dayType;
         $this->illness = $illness;
         $this->dayNumber = $dayNumber;
@@ -90,34 +77,24 @@ class DailyEating
         $this->id = $id;
     }
 
-    public function getCalorieNumber(): int
+    public function getTimeGoToBed()
     {
-        return $this->calorieNumber;
+        return $this->timeGoToBed;
     }
 
-    public function setCalorieNumber(int $calorieNumber): void
+    public function setTimeGoToBed($timeGoToBed): void
     {
-        $this->calorieNumber = $calorieNumber;
+        $this->timeGoToBed = $timeGoToBed;
     }
 
-    public function getCalorieEstimate(): int
+    public function getTimeGetUp()
     {
-        return $this->calorieEstimate;
+        return $this->timeGetUp;
     }
 
-    public function setCalorieEstimate(int $calorieEstimate): void
+    public function setTimeGetUp($timeGetUp): void
     {
-        $this->calorieEstimate = $calorieEstimate;
-    }
-
-    public function getOutsideFood(): int
-    {
-        return $this->outsideFood;
-    }
-
-    public function setOutsideFood(int $outsideFood): void
-    {
-        $this->outsideFood = $outsideFood;
+        $this->timeGetUp = $timeGetUp;
     }
 
     public function getDayType(): string

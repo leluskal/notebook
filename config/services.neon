@@ -9,4 +9,5 @@ services:
 	- App\Model\DailyEating\DailyEatingRepository
 	- App\Model\DailyNumberOfStep\DailyNumberOfStepRepository
 	- App\Model\DailyProgramming\DailyProgrammingRepository
+	- App\Model\DailySleeping\DailySleepingRepository
 

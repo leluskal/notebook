@@ -26,14 +26,14 @@ class DailyProgramming
     private $dayPart;
 
     /**
-     * @var int
-     */
-    private $illness;
-
-    /**
      * @var string|null
      */
     private $note;
+
+    /**
+     * @var int
+     */
+    private $illness;
 
     /**
      * @var int
@@ -107,16 +107,6 @@ class DailyProgramming
         $this->dayPart = $dayPart;
     }
 
-    public function getIllness(): int
-    {
-        return $this->illness;
-    }
-
-    public function setIllness(int $illness): void
-    {
-        $this->illness = $illness;
-    }
-
     public function getNote(): ?string
     {
         return $this->note;
@@ -125,6 +115,16 @@ class DailyProgramming
     public function setNote(?string $note): void
     {
         $this->note = $note;
+    }
+
+    public function getIllness(): int
+    {
+        return $this->illness;
+    }
+
+    public function setIllness(int $illness): void
+    {
+        $this->illness = $illness;
     }
 
     public function getDayNumber(): int
