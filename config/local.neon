@@ -1,5 +1,10 @@
 parameters:
-
+	db:
+		driver: mysqli
+		host: localhost
+		username: lenka
+		password: password
+		databaseName: notebook
 
 database:
 	dsn: 'mysql:host=127.0.0.1;dbname=test'
