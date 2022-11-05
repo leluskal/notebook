@@ -1,0 +1,53 @@
+{block content}
+
+<div class="calendar-container">
+    {var $dayNumber = 1}
+    {for $row = 1; $row <= 5; $row++}
+        <div class="week-row">
+            {for $column = 1; $column <= 7; $column++}
+                {breakIf $dayNumber >= 32}
+                {var $colorClass = ''}
+                {ifset $dailyStretchingsByDayNumber[$dayNumber]}
+                    {if $dailyStretchingsByDayNumber[$dayNumber]['stretch_time'] > 0}
+                        {var $colorClass = 'has-record-stretching'}
+                    {/if}
+                {/ifset}
+                <div class="day-item {$colorClass}">
+                    <span id="day-number">
+                         <a n:href="DailyStretching:create, dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-mood-create">
+                            {$dayNumber}.
+                         </a>
+                    </span>
+                    {ifset $dailyStretchingsByDayNumber[$dayNumber]}
+                        <span {if $dailyStretchingsByDayNumber[$dayNumber]['day_type'] == 'Free Day'} class="free-day"
+                              {else} class="work-day"{/if}>
+                              {$dailyStretchingsByDayNumber[$dayNumber]['day_type']}
+                        </span>
+                        {if $dailyStretchingsByDayNumber[$dayNumber]['illness'] === 1}
+                            <span><i class="fas fa-pills fa-xs"></i></span>
+                        {/if}
+                        {if $dailyStretchingsByDayNumber[$dayNumber]['note'] !== null}
+                            <span><i class="fas fa-pen-nib fa-xs"></i></span>
+                        {/if}
+                    {/ifset}
+                    <br>
+                    <div class="stretching-records-item">
+                        {ifset $dailyStretchingsByDayNumber[$dayNumber]}
+                            {if $dailyStretchingsByDayNumber[$dayNumber]['stretch_time'] > 0}
+                                {$dailyStretchingsByDayNumber[$dayNumber]['stretch_time']} min
+                            {/if}
+                            <br>
+                            <br>
+                            <span>{$dailyStretchingsByDayNumber[$dayNumber]['day_part']}</span>
+                        {else}
+                            <a n:href="DailyStretching:create, dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-stretching-create">
+                                <i class="fas fa-spa"></i>
+                            </a>
+                        {/ifset}
+                    </div>
+                    <span style="display: none;">{$dayNumber++}</span>
+                </div>
+            {/for}
+        </div>
+    {/for}
+</div>

@@ -13,4 +13,6 @@ services:
 	- App\Model\DailyStretching\DailyStretchingRepository
 	- App\FrontModule\Components\Forms\DailyBodyWeight\DailyBodyWeightFormFactory
 	- App\FrontModule\Components\Forms\DailyEating\DailyEatingFormFactory
+	- App\FrontModule\Components\Forms\DailyStretching\DailyStretchingFormFactory
+	- App\FrontModule\Components\Forms\DailySleeping\DailySleepingFormFactory
 
