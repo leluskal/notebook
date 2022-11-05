@@ -16,4 +16,6 @@ services:
 	- App\FrontModule\Components\Forms\DailyStretching\DailyStretchingFormFactory
 	- App\FrontModule\Components\Forms\DailySleeping\DailySleepingFormFactory
 	- App\FrontModule\Components\Forms\DailyProgramming\DailyProgrammingFormFactory
+	- App\FrontModule\Components\Forms\DailyNumberOfStep\DailyNumberOfStepFormFactory
+	- App\Model\FitnessInstructor\FitnessInstructorRepository
 
