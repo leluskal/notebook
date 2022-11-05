@@ -6,4 +6,5 @@ services:
 	- App\AdminModule\Components\Forms\Login\LoginFormFactory
 	- App\Model\Authentication\UserAuthenticator
 	- App\Model\DailyBodyWeight\DailyBodyWeightRepository
+	- App\Model\DailyEating\DailyEatingRepository
 
