@@ -7,4 +7,5 @@ services:
 	- App\Model\Authentication\UserAuthenticator
 	- App\Model\DailyBodyWeight\DailyBodyWeightRepository
 	- App\Model\DailyEating\DailyEatingRepository
+	- App\Model\DailyNumberOfStep\DailyNumberOfStepRepository
 
