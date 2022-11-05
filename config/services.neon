@@ -18,4 +18,5 @@ services:
 	- App\FrontModule\Components\Forms\DailyProgramming\DailyProgrammingFormFactory
 	- App\FrontModule\Components\Forms\DailyNumberOfStep\DailyNumberOfStepFormFactory
 	- App\Model\FitnessInstructor\FitnessInstructorRepository
+	- App\AdminModule\Components\Forms\FitnessInstructor\FitnessInstructorFormFactory
 
