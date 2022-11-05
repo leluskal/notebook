@@ -10,4 +10,6 @@ services:
 	- App\Model\DailyNumberOfStep\DailyNumberOfStepRepository
 	- App\Model\DailyProgramming\DailyProgrammingRepository
 	- App\Model\DailySleeping\DailySleepingRepository
+	- App\Model\DailyStretching\DailyStretchingRepository
+	- App\FrontModule\Components\Forms\DailyBodyWeight\DailyBodyWeightFormFactory
 

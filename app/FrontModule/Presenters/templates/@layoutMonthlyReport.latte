@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="{$basePath}/css/style-new.css" rel="stylesheet">
+    <link href="{$basePath}/css/style-mobile-new.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7cd3503c9e.js" crossorigin="anonymous"></script>
+
+
+    <title>{ifset title}{include title|stripHtml} | {/ifset}Monthly Reports</title>
+</head>
+
+<body>
+
+{foreach $flashes as $flash}
+    <p class="flash text-center text-white bg-{$flash->type}">{$flash->message}</p>
+{/foreach}
+
+<header class="{$menuMonthsCssClass}">
+        <div class="months-container">
+            {for $month = 1; $month <= 12; $month++}
+                <div class="month-item">
+                    <a n:href="$menuMonthsLink, month => $month">
+                        {if $actualMonth == $month}
+                            <i class="fas fa-walking"></i>
+                        {/if}
+                        {date('F', mktime(0, 0, 0, $month, 10))} {*naformatoanie mesiaca - aby vypisalo nazov*}
+                    </a>
+                </div>
+            {/for}
+        </div>
+        <div class="icons-container">
+            <div class="icon-item">
+                <a n:href="Planning:default" {if isLinkCurrent('Planning:default')}class="active"{/if}>
+                    <i class="fas fa-home"></i>
+                </a>
+            </div>
+            <div class="icon-item">
+                <a n:href="DailyEating:default" {if isLinkCurrent('DailyEating:default')}class="active"{/if}>
+                    <i class="fas fa-cookie-bite"></i>
+                </a>
+            </div>
+{*             <div class="icon-item">*}
+{*                <a n:href="DailyWorkout:default" {if isLinkCurrent('DailyWorkout:default')}class="active"{/if}>*}
+{*                    <i class="fas fa-dumbbell"></i>*}
+{*                </a>*}
+{*            </div>*}
+{*            <div class="icon-item">*}
+{*                <a n:href="DailyStretching:default" {if isLinkCurrent('DailyStretching:default')}class="active"{/if}>*}
+{*                    <i class="fas fa-spa"></i>*}
+{*                </a>*}
+{*            </div>*}
+{*            <div class="icon-item">*}
+{*                <a n:href="DailyProgramming:default" {if isLinkCurrent('DailyProgramming:default')}class="active"{/if}>*}
+{*                    <i class="fas fa-laptop-code"></i>*}
+{*                </a>*}
+{*            </div>*}
+{*            <div class="icon-item">*}
+{*                <a n:href="DailyMobile:default" {if isLinkCurrent('DailyMobile:default')}class="active"{/if}>*}
+{*                    <i class="fas fa-mobile"></i>*}
+{*                </a>*}
+{*            </div>*}
+{*            <div class="icon-item">*}
+{*                <a n:href="DailyFaceCare:default" {if isLinkCurrent('DailyFaceCare:default')}class="active"{/if}>*}
+{*                    <i class="fas fa-tooth"></i>*}
+{*                </a>*}
+{*            </div>*}
+{*            <div class="icon-item">*}
+{*                <a n:href="DailySleeping:default" {if isLinkCurrent('DailySleeping:default')}class="active"{/if}>*}
+{*                    <i class="fas fa-bed"></i>*}
+{*                </a>*}
+{*            </div>*}
+{*            <div class="icon-item">*}
+{*                <a n:href="OutsideFood:default" {if isLinkCurrent('OutsideFood:default')}class="active"{/if}>*}
+{*                    <i class="fas fa-pizza-slice"></i>*}
+{*                </a>*}
+{*            </div>*}
+{*            <div class="icon-item">*}
+{*                <a n:href="ShoppingCart:default" {if isLinkCurrent('ShoppingCart:default')}class="active"{/if}>*}
+{*                    <i class="fas fa-shopping-cart"></i>*}
+{*                </a>*}
+{*            </div>*}
+{*            <div class="icon-item">*}
+{*                <a n:href="Drogery:default" {if isLinkCurrent('Drogery:default')}class="active"{/if}>*}
+{*                    <i class="fas fa-spray-can"></i>*}
+{*                </a>*}
+{*            </div>*}
+{*            <div class="icon-item">*}
+{*                <a n:href="DailyToDo:default" {if isLinkCurrent('DailyToDo:default')}class="active"{/if}>*}
+{*                    <i class="fas fa-list"></i>*}
+{*                </a>*}
+{*            </div>*}
+            <div class="icon-item">
+                <a n:href=":Admin:Homepage:default">
+                    <i class="fas fa-tools"></i>
+                </a>
+            </div>
+            <div class="icon-item">
+                <a n:href="logout!">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </div>
+        </div>
+</header>
+
+{include content}
+
+</body>
+</html>
