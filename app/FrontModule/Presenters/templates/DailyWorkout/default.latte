@@ -1,0 +1,56 @@
+{block content}
+
+<div class="calendar-container">
+    {var $dayNumber = 1}
+    {for $row = 1; $row <= 5; $row++}
+        <div class="week-row">
+            {for $column = 1; $column <= 7; $column++}
+                {breakIf $dayNumber >= 32}
+                {var $colorClass = ''}
+                {ifset $instructorsByDayNumber[$dayNumber]}
+                    {if $instructorsByDayNumber[$dayNumber] !== '' && $dailyWorkoutsByDayNumber[$dayNumber]['illness'] == 0}
+                        {var $colorClass = 'has-record-workout'}
+                    {/if}
+                {/ifset}
+                <div class="day-item {$colorClass}">
+                    <span id="day-number">
+                        <a n:href="DailyWorkout:create, dayNumber => $dayNumber, month => $actualMonth, year => $year">
+                            {$dayNumber}.
+                        </a>
+                    </span>
+                    {ifset $instructorsByDayNumber[$dayNumber]}
+                        <br>
+                        {foreach $instructorsByDayNumber[$dayNumber] as $instructorData}
+                            {if $instructorData['name'] !== 'none'}
+                                <a n:href="DailyWorkout:edit, id => $instructorData['id']" class="link-workout-edit">
+                                    {$instructorData['name']}
+                                    ({$instructorData['workout_time']} min)
+                                </a>
+                            {/if}
+                        {/foreach}
+                        {if $dailyWorkoutsByDayNumber[$dayNumber]['illness'] === 1}
+                            <span><i class="fas fa-pills"></i></span>
+                        {/if}
+                        {else}
+                        <a n:href="DailyWorkout:create, dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-workout-create">
+                            <i class="fas fa-heartbeat"></i>
+                        </a>
+                    {/ifset}
+                    <br><br>
+                    {ifset $stepsByDayNumber[$dayNumber]}
+                        <a n:href="DailyNumberOfStep:create, dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-steps-create steps-count">
+                            <span {if $stepsByDayNumber[$dayNumber] >= 5000}class="green-step" {else}class="red-step"{/if}>
+                                Steps: {number_format($stepsByDayNumber[$dayNumber], 0, '', ' ')}
+                            </span>
+                        </a>
+                    {else}
+                        <a n:href="DailyNumberOfStep:create, dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-steps-create">
+                            <i class="fas fa-shoe-prints"></i>
+                        </a>
+                    {/ifset}
+                    <span style="display: none;">{$dayNumber++}</span>
+                </div>
+            {/for}
+        </div>
+    {/for}
+</div>
