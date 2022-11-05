@@ -8,4 +8,5 @@ services:
 	- App\Model\DailyBodyWeight\DailyBodyWeightRepository
 	- App\Model\DailyEating\DailyEatingRepository
 	- App\Model\DailyNumberOfStep\DailyNumberOfStepRepository
+	- App\Model\DailyProgramming\DailyProgrammingRepository
 
