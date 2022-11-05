@@ -15,4 +15,5 @@ services:
 	- App\FrontModule\Components\Forms\DailyEating\DailyEatingFormFactory
 	- App\FrontModule\Components\Forms\DailyStretching\DailyStretchingFormFactory
 	- App\FrontModule\Components\Forms\DailySleeping\DailySleepingFormFactory
+	- App\FrontModule\Components\Forms\DailyProgramming\DailyProgrammingFormFactory
 

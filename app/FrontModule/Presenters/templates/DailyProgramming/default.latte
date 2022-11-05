@@ -1,0 +1,53 @@
+{block content}
+
+<div class="calendar-container">
+    {var $dayNumber = 1}
+    {for $row = 1; $row <= 5; $row++}
+        <div class="week-row">
+            {for $column = 1; $column <= 7; $column++}
+                {breakIf $dayNumber >= 32}
+                {var $colorClass = ''}
+                {ifset $dailyProgrammingsByDayNumber[$dayNumber]}
+                    {if $dailyProgrammingsByDayNumber[$dayNumber]['programming_duration'] > 0}
+                        {var $colorClass = 'has-record-programming'}
+                    {/if}
+                {/ifset}
+                <div class="day-item {$colorClass}">
+                    <span id="day-number">
+                       <a n:href="DailyProgramming:create, dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-programming-time">
+                            {$dayNumber}.
+                       </a>
+                    </span>
+                    {ifset $dailyProgrammingsByDayNumber[$dayNumber]}
+                        <span {if $dailyProgrammingsByDayNumber[$dayNumber]['day_type'] == 'Free Day'}class="free-day"
+                              {else}class="work-day"{/if}>
+                                   {$dailyProgrammingsByDayNumber[$dayNumber]['day_type']}
+                       </span>
+                        {if $dailyProgrammingsByDayNumber[$dayNumber]['illness'] === 1}
+                            <span><i class="fas fa-pills"></i></span>
+                        {/if}
+                        {if $dailyProgrammingsByDayNumber[$dayNumber]['note'] !== null}
+                            <span><i class="fas fa-pen-nib fa-xs"></i></span>
+                        {/if}
+                    {/ifset}
+                    <div class="programming-records-item">
+                        {ifset $dailyProgrammingsByDayNumber[$dayNumber]}
+                            {if $dailyProgrammingsByDayNumber[$dayNumber]['programming_duration'] !== null}
+                                {$dailyProgrammingsByDayNumber[$dayNumber]['programming_duration']} min
+                            {/if}
+                            <br>
+                            <br>
+                            <span>{$dailyProgrammingsByDayNumber[$dayNumber]['day_part']}</span>
+                            <br>
+                        {else}
+                            <a n:href="DailyProgramming:create, dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-programming-create">
+                                <i class="fas fa-code"></i>
+                            </a>
+                        {/ifset}
+                    </div>
+                    <span style="display: none;">{$dayNumber++}</span>
+                </div>
+            {/for}
+        </div>
+    {/for}
+</div>
