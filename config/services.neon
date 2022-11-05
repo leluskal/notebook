@@ -1,4 +1,8 @@
 services:
 	- App\Router\RouterFactory::createRouter
 	- App\Model\DibiConnection(%db.driver%, %db.host%, %db.username%, %db.password%, %db.databaseName%)
+	- App\Model\User\UserRepository
+	- App\AdminModule\Components\Forms\Register\RegisterFormFactory
+	- App\AdminModule\Components\Forms\Login\LoginFormFactory
+	- App\Model\Authentication\UserAuthenticator
 
