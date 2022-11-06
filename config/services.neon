@@ -23,4 +23,5 @@ services:
 	- App\FrontModule\Components\Forms\DailyWorkout\DailyWorkoutFormFactory
 	- App\Model\DailyMobile\DailyMobileRepository
 	- App\FrontModule\Components\Forms\DailyMobile\DailyMobileFormFactory
+	- App\Model\DailyBodyCare\DailyBodyCareRepository
 
