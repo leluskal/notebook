@@ -1,0 +1,22 @@
+{block content}
+
+<div class="monthly-report-class">
+    <h1>Total Steps {$year}</h1>
+    <table id="steps-table">
+        <tr>
+            {foreach $months as $number => $month}
+                <td>{$month}</td>
+            {/foreach}
+        </tr>
+        <tr>
+            {foreach $months as $number => $month}
+                <td>{$numberOfRecords[$number]}/{$d=cal_days_in_month(CAL_GREGORIAN, $number,  $year)}</td>
+            {/foreach}
+        </tr>
+        <tr>
+            {foreach $months as $number => $month}
+                <td>{number_format($totalData[$number], 0, '', ' ')} steps</td>
+            {/foreach}
+        </tr>
+    </table>
+</div>

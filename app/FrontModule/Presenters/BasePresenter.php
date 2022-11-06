@@ -11,6 +11,7 @@ use Nette\Utils\DateTime;
 abstract class BasePresenter extends Presenter
 {
     /**
+     * @persistent
      * @var string
      */
     public $year;

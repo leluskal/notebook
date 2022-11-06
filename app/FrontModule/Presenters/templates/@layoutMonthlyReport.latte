@@ -26,7 +26,7 @@
                         {if $actualMonth == $month}
                             <i class="fas fa-walking"></i>
                         {/if}
-                        {date('F', mktime(0, 0, 0, $month, 10))} {*naformatoanie mesiaca - aby vypisalo nazov*}
+                        {date('F', mktime(0, 0, 0, $month, 10))}
                     </a>
                 </div>
             {/for}
@@ -87,11 +87,6 @@
                     <i class="fas fa-shopping-cart"></i>
                 </a>
             </div>
-{*            <div class="icon-item">*}
-{*                <a n:href="Drogery:default" {if isLinkCurrent('Drogery:default')}class="active"{/if}>*}
-{*                    <i class="fas fa-spray-can"></i>*}
-{*                </a>*}
-{*            </div>*}
             <div class="icon-item">
                 <a n:href=":Admin:Homepage:default">
                     <i class="fas fa-tools"></i>

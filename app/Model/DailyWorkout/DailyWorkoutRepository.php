@@ -130,7 +130,7 @@ class DailyWorkoutRepository extends BaseRepository
     public function getNumberOfRecords(int $month, int $year): int
     {
         $numberOfRecords = $this->getDbConnection()
-            ->query('SELECT COUNT(DISTINCT(day_number)) FROM daily_workout WHERE month = ? AND year = ? AND illness = 0 AND menstruation = 0',
+            ->query('SELECT COUNT(DISTINCT(day_number)) FROM daily_workout WHERE month = ? AND year = ? AND illness = 0',
                 $month,
                 $year)
             ->fetchSingle();

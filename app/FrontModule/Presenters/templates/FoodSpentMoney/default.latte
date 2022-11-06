@@ -1,0 +1,41 @@
+{block content}
+
+<div class="monthly-report-class">
+    <h1>Total Food Spent Money {$year}</h1>
+    <table id="total-food-spent-money-table">
+        <tr>
+            <th></th>
+            {foreach $months as $number => $month}
+                <td><b>{$month}</b></td>
+            {/foreach}
+        </tr>
+        <tr>
+            <th>Shopping Cart</th>
+            {foreach $months as $number => $month}
+                <td>
+                    {number_format($shoppingCartData[$number], 0, '', ' ')} czk
+                    ({$numberOfRecordsShoppingCart[$number]})
+                </td>
+            {/foreach}
+        </tr>
+        <tr>
+            <th>Outside Food</th>
+            {foreach $months as $number => $month}
+                <td>
+                    {number_format($outsideFoodData[$number], 0, '', ' ')} czk
+                    <br>
+                    ({$numberOfRecordsOutsideFood[$number]} <i class="fas fa-hotdog fa-xs"></i>
+                    {$numberOfDrinkRecords[$number]} <i class="fas fa-wine-glass fa-xs"></i>)
+                </td>
+            {/foreach}
+        </tr>
+        <tr>
+            <th>Total Spent Money</th>
+            {foreach $months as $number => $month}
+                <td>
+                    <b>{number_format($outsideFoodData[$number] + $shoppingCartData[$number], 0, '', ' ') } czk</b>
+                </td>
+            {/foreach}
+        </tr>
+    </table>
+</div>

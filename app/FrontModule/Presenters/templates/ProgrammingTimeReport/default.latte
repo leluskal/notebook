@@ -1,0 +1,26 @@
+{block content}
+
+<div class="monthly-report-class">
+    <h1>Total Programming Time {$year}</h1>
+    <table id="programming-time-table">
+        <tr>
+            {foreach $months as $number => $month}
+                <td><b>{$month}</b></td>
+            {/foreach}
+        </tr>
+        <tr>
+            {foreach $months as $number => $month}
+                <td>{$numberOfRecords[$number]}/{$d=cal_days_in_month(CAL_GREGORIAN, $number,  $year)}</td>
+            {/foreach}
+        </tr>
+        <tr>
+            {foreach $months as $number => $month}
+                <td>{$totalData[$number]} min
+                    <i class="fas fa-arrow-right"></i>
+                    <br>
+                    {\App\Model\Utils::convertMinutesToTimeString($totalData[$number])}
+                </td>
+            {/foreach}
+        </tr>
+    </table>
+</div>
