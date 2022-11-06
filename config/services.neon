@@ -27,4 +27,5 @@ services:
 	- App\FrontModule\Components\Forms\DailyBodyCare\DailyBodyCareFormFactory
 	- App\Model\DailyToDo\DailyToDoRepository
 	- App\FrontModule\Components\Forms\DailyToDo\DailyToDoFormFactory
+	- App\Model\OutsideFood\OutsideFoodRepository
 
