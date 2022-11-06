@@ -1,0 +1,37 @@
+{block content}
+
+<div class="calendar-container">
+    {var $dayNumber = 1}
+    {for $row = 1; $row <= 5; $row++}
+        <div class="week-row">
+            {for $column = 1; $column <= 7; $column++}
+                {breakIf $dayNumber >= 32}
+                {var $colorClass = ''}
+                {ifset $dailyBodyCaresByDayNumber[$dayNumber]}
+                    {if $dailyBodyCaresByDayNumber[$dayNumber]['percentage'] > 0.0}
+                        {var $colorClass = 'has-record-body-care'}
+                    {/if}
+                {/ifset}
+                <div class="day-item {$colorClass}">
+                        <span id="day-number">
+                             <a n:href="DailyBodyCare:create, dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-body-care-create">
+                                 {$dayNumber}.
+                            </a>
+                        </span>
+                    <div class="body-care-records-item">
+                        <br>
+                        {if isset($dailyBodyCaresByDayNumber[$dayNumber]) && $dailyBodyCaresByDayNumber[$dayNumber]['percentage'] > 0.0}
+                            <b>{number_format($dailyBodyCaresByDayNumber[$dayNumber]['percentage'], 1, ',', ' ')}%</b>
+                        {else}
+                            <a n:href="DailyBodyCare:create, dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-body-care-create">
+                                <i class="fas fa-spray-can"></i>
+                            </a>
+                        {/if}
+                    </div>
+                    <span style="display: none;">{$dayNumber++}</span>
+                </div>
+            {/for}
+        </div>
+    {/for}
+
+</div>
