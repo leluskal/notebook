@@ -29,4 +29,5 @@ services:
 	- App\FrontModule\Components\Forms\DailyToDo\DailyToDoFormFactory
 	- App\Model\OutsideFood\OutsideFoodRepository
 	- App\FrontModule\Components\Forms\OutsideFood\OutsideFoodFormFactory
+	- App\Model\ShoppingCart\ShoppingCartRepository
 
