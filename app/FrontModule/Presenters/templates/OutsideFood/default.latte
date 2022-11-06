@@ -1,0 +1,48 @@
+{block content}
+
+<div class="calendar-container">
+    {var $dayNumber = 1}
+    {for $row = 1; $row <= 5; $row++}
+        <div class="week-row">
+            {for $column = 1; $column <= 7; $column++}
+                {breakIf $dayNumber > 31}
+                {var $colorClass = ''}
+                {ifset $outsideFoodByDayNumber[$dayNumber]}
+                    {if $outsideFoodByDayNumber[$dayNumber] !== ''}
+                        {var $colorClass = 'has-record-outside-food'}
+                    {/if}
+                {/ifset}
+                <div class="day-item {$colorClass}">
+                    <span id="day-number">
+                        <a n:href="OutsideFood:create, dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-outside-food-create">
+                            {$dayNumber}.
+                        </a>
+                    </span>
+                    <div class="outside-food-records-item">
+                        {ifset $outsideFoodByDayNumber[$dayNumber]}
+                            {foreach $outsideFoodByDayNumber[$dayNumber] as $outsideFoodData}
+                                <a n:href="OutsideFood:edit, id => $outsideFoodData['id']" class="link-outside-food-edit">
+                                    <span><b>{$outsideFoodData['food']}</b></span>
+                                    {if $outsideFoodData['food_delivery'] === 1}
+                                        <span><i class="fas fa-phone-volume"></i></span>
+                                    {/if}
+                                    <span>({number_format($outsideFoodData['price'], 0, '', ' ')} czk)</span>
+                                    {if $outsideFoodData['drink'] === 1}
+                                        <span><i class="fas fa-wine-glass fa-xs"></i></span>
+                                    {/if}
+                                    <br>
+                                </a>
+                                <br>
+                            {/foreach}
+                        {else}
+                            <a n:href="OutsideFood:create, dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-outside-food-create">
+                                <i class="fas fa-pizza-slice"></i>
+                            </a>
+                        {/ifset}
+                    </div>
+                </div>
+                <span style="display: none;">{$dayNumber++}</span>
+            {/for}
+        </div>
+    {/for}
+</div>
