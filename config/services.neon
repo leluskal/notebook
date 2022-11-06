@@ -30,4 +30,5 @@ services:
 	- App\Model\OutsideFood\OutsideFoodRepository
 	- App\FrontModule\Components\Forms\OutsideFood\OutsideFoodFormFactory
 	- App\Model\ShoppingCart\ShoppingCartRepository
+	- App\FrontModule\Components\Forms\ShoppingCart\ShoppingCartFormFactory
 

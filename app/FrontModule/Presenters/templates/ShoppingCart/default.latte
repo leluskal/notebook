@@ -1,0 +1,47 @@
+{block content}
+
+<div class="calendar-container">
+    {var $dayNumber = 1}
+    {for $row = 1; $row <= 5; $row++}
+        <div class="week-row">
+            {for $column = 1; $column <= 7; $column++}
+                {breakIf $dayNumber > 31}
+                {var $colorClass = ''}
+                {ifset $shoppingCartsByDayNumber[$dayNumber]}
+                    {foreach  $shoppingCartsByDayNumber[$dayNumber] as $shoppingCartData}
+                        {if $shoppingCartData['shop'] !== ''}
+                            {var $colorClass = 'has-record-shopping-cart'}
+                        {/if}
+                    {/foreach}
+                {/ifset}
+                <div class="day-item {$colorClass}">
+                    <span id="day-number">
+                         <a n:href="ShoppingCart:create, dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-shopping-cart-create">
+                             {$dayNumber}.
+                        </a>
+                    </span>
+                    <div class="shopping-cart-records-item">
+                        {ifset $shoppingCartsByDayNumber[$dayNumber]}
+                            {foreach  $shoppingCartsByDayNumber[$dayNumber] as $shoppingCartData}
+                                <a n:href="ShoppingCart:edit, id => $shoppingCartData['id']" class="link-shopping-cart-edit">
+                                    <b>{$shoppingCartData['shop']}</b>
+                                    ({number_format($shoppingCartData['price'], 0, '', ' ')} czk)
+                                     {if $shoppingCartData['note'] !== null}
+                                        <span><i class="fas fa-pen-nib fa-xs"></i></span>
+                                    {/if}
+                                </a>
+                                <br>
+                            {/foreach}
+                        {else}
+                            <a n:href="ShoppingCart:create, dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-shopping-cart-create">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
+                        {/ifset}
+                    </div>
+                </div>
+                <span style="display: none;">{$dayNumber++}</span>
+            {/for}
+        </div>
+    {/for}
+
+</div>
