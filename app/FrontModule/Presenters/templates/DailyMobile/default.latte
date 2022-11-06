@@ -1,0 +1,69 @@
+{block content}
+
+<div class="calendar-container">
+    {var $dayNumber = 1}
+    {for $row = 1; $row <= 5; $row++}
+        <div class="week-row">
+            {for $column = 1; $column <= 7; $column++}
+                {breakIf $dayNumber >= 32}
+                {var $colorClass = ''}
+                {ifset $dailyMobilesByDayNumber[$dayNumber]}
+                    {if $dailyMobilesByDayNumber[$dayNumber]['screen_usage_time'] > 0}
+                        {var $colorClass = 'has-record-mobile'}
+                    {/if}
+                {/ifset}
+                <div class="day-item {$colorClass}">
+                    <span id="day-number">
+                        <a n:href="DailyMobile:create, dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-mobile-create">
+                            {$dayNumber}.
+                        </a>
+                    </span>
+                    {ifset $dailyMobilesByDayNumber[$dayNumber]}
+                        <span {if $dailyMobilesByDayNumber[$dayNumber]['day_type'] == 'Free Day'}class="free-day"
+                              {else}class="work-day"{/if}>
+                                   {$dailyMobilesByDayNumber[$dayNumber]['day_type']}
+                       </span>
+                        {if $dailyMobilesByDayNumber[$dayNumber]['note'] !== null}
+                            <span><i class="fas fa-pen-nib fa-xs"></i></span>
+                        {/if}
+                    {/ifset}
+                    <div class="mobile-records-item">
+                        {ifset $dailyMobilesByDayNumber[$dayNumber]}
+                            <b>
+                                {$dailyMobilesByDayNumber[$dayNumber]['screen_usage_time']
+                                - $dailyMobilesByDayNumber[$dayNumber]['non_interactive_mode_time']
+                                - $dailyMobilesByDayNumber[$dayNumber]['reading_time']}
+                                min</b>
+                            <br><br>
+                            {if $dailyMobilesByDayNumber[$dayNumber]['non_interactive_mode_time'] !== null}
+                                <span id="non-interactive">non-interactive: {$dailyMobilesByDayNumber[$dayNumber]['non_interactive_mode_time']} min
+                            {/if}
+                            <br>
+                            {if $dailyMobilesByDayNumber[$dayNumber]['reading_time'] !== null}
+                                reading: {$dailyMobilesByDayNumber[$dayNumber]['reading_time']} min</span>
+                            {/if}
+                            <br><br>
+                            {if $dailyMobilesByDayNumber[$dayNumber]['playing_time'] !== null}
+                                <span id="mobile-playing">playing: {$dailyMobilesByDayNumber[$dayNumber]['playing_time']} min</span>
+                            {/if}
+                            <br>
+                            {if $dailyMobilesByDayNumber[$dayNumber]['insta_time'] !== null}
+                                <span id="mobile-playing">instagram: {$dailyMobilesByDayNumber[$dayNumber]['insta_time']} min</span>
+                            {/if}
+                            <br>
+                            <span>{$dailyMobilesByDayNumber[$dayNumber]['number_of_screen_unlocks']}
+                                <i class="fas fa-unlock fa-xs"></i>
+                            </span>
+                            <br>
+                        {else}
+                            <a n:href="DailyMobile:create, dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-mobile-create">
+                                <i class="fas fa-mobile"></i>
+                            </a>
+                        {/ifset}
+                    </div>
+                    <span style="display: none;">{$dayNumber++}</span>
+                </div>
+            {/for}
+        </div>
+    {/for}
+</div>
