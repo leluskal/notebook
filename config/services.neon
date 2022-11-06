@@ -21,4 +21,5 @@ services:
 	- App\AdminModule\Components\Forms\FitnessInstructor\FitnessInstructorFormFactory
 	- App\Model\DailyWorkout\DailyWorkoutRepository
 	- App\FrontModule\Components\Forms\DailyWorkout\DailyWorkoutFormFactory
+	- App\Model\DailyMobile\DailyMobileRepository
 
