@@ -1,0 +1,45 @@
+{block content}
+
+<div class="calendar-container">
+    {var $dayNumber = 1}
+    {for $row = 1; $row <= 5; $row++}
+        <div class="week-row">
+            {for $column = 1; $column <= 7; $column++}
+                {breakIf $dayNumber > 31}
+                {var $colorClass = ''}
+                {ifset $dailyToDoByDayNumber[$dayNumber]}
+                {/ifset}
+                <div class="day-item {$colorClass}">
+                    <span id="day-number">
+                         <a n:href="DailyToDo:create, dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-to-do-create">
+                             {$dayNumber}.
+                        </a>
+                    </span>
+                    <div class="shopping-cart-records-item">
+                        {ifset $dailyToDoByDayNumber[$dayNumber]}
+                            {foreach $dailyToDoByDayNumber[$dayNumber] as $toDoData}
+                                <a n:href="DailyToDo:edit, id => $toDoData['id']" class="link-to-do-edit">
+                                    {if $toDoData['note'] !== null}
+                                        <span><i class="fas fa-pen-nib fa-xs"></i></span>
+                                    {/if}
+                                    {$toDoData['task']}
+                                     {if $toDoData['done'] == 0}
+                                        <i class="far fa-square"></i>
+                                        {else} <i class="far fa-check-square"></i>
+                                    {/if}
+                                </a>
+                                <br>
+                            {/foreach}
+                        {else}
+                            <a n:href="DailyToDo:create, dayNumber => $dayNumber, month => $actualMonth, year => $year" class="link-to-do-create">
+                                <i class="fas fa-list"></i>
+                            </a>
+                        {/ifset}
+                    </div>
+                </div>
+                <span style="display: none;">{$dayNumber++}</span>
+            {/for}
+        </div>
+    {/for}
+
+</div>
