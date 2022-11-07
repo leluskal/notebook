@@ -31,6 +31,16 @@ class Movie
     private $rating;
 
     /**
+     * @var int
+     */
+    private $seen;
+
+    /**
+     * @var int
+     */
+    private $year;
+
+    /**
      * @var array
      */
     private $genreIds;
@@ -40,11 +50,13 @@ class Movie
      */
     private $genreNames;
 
-    public function __construct(string $name, string $countryOfOrigin, int $releaseYear)
+    public function __construct(string $name, string $countryOfOrigin, int $releaseYear, int $seen, int $year)
     {
         $this->name = $name;
         $this->countryOfOrigin = $countryOfOrigin;
         $this->releaseYear = $releaseYear;
+        $this->seen = $seen;
+        $this->year = $year;
     }
 
     public function getId(): int
@@ -95,6 +107,26 @@ class Movie
     public function setRating(?int $rating): void
     {
         $this->rating = $rating;
+    }
+
+    public function getSeen(): int
+    {
+        return $this->seen;
+    }
+
+    public function setSeen(int $seen): void
+    {
+        $this->seen = $seen;
+    }
+
+    public function getYear(): int
+    {
+        return $this->year;
+    }
+
+    public function setYear(int $year): void
+    {
+        $this->year = $year;
     }
 
     public function getGenreIds(): array

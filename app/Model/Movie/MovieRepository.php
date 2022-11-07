@@ -23,7 +23,9 @@ class MovieRepository extends BaseRepository
         $movie = new Movie(
             (string)$row->name,
             (string)$row->country_of_origin,
-            (int)$row->release_year
+            (int)$row->release_year,
+            (int)$row->seen,
+            (int)$row->year
         );
         $movie->setId((int)$row->id);
         $movie->setRating($row->rating);
@@ -39,7 +41,9 @@ class MovieRepository extends BaseRepository
             $movie = new Movie(
                 (string)$row->name,
                 (string)$row->country_of_origin,
-                (int)$row->release_year
+                (int)$row->release_year,
+                (int)$row->seen,
+                (int)$row->year
             );
             $movie->setId((int)$row->id);
             $movie->setRating($row->rating);
@@ -54,23 +58,10 @@ class MovieRepository extends BaseRepository
      * @return Movie[]
      * @throws \Dibi\Exception
      */
-    public function findAll(): array
+    public function findAllByYear(int $year): array
     {
-        $rows = $this->getDbConnection()->query('SELECT * FROM movie')->fetchAll();
+        $rows = $this->getDbConnection()->query('SELECT * FROM movie WHERE year = ?', $year)->fetchAll();
 
         return $this->mapRowsToObjects($rows);
-    }
-
-    public function findAllForSelectBox(): array
-    {
-        $movies = $this->findAll();
-
-        $returnArray = [];
-
-        foreach ($movies as $movie) {
-            $returnArray[$movie->getId()] = $movie->getName();
-        }
-
-        return $returnArray;
     }
 }

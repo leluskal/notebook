@@ -36,4 +36,7 @@ services:
 	- App\Model\Genre\GenreRepository
 	- App\AdminModule\Components\Forms\Genre\GenreFormFactory
 	- App\Model\Movie\MovieRepository
+	- App\Model\MovieGenre\MovieGenreRepository
+	- App\FrontModule\Components\Forms\Movie\MovieFormFactory
+	- App\Model\Movie\MovieService
 

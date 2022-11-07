@@ -1,0 +1,61 @@
+{block content}
+
+<div class="movie-class">
+    <h1>Movies - {$year}</h1>
+    <p>
+        <a n:href="Movie:create, year => $year">
+            <button class="button-57" role="button">
+                <span class="text">Add Movie</span>
+                <span>
+                    <i class="fas fa-tv"></i>
+                    <i class="fas fa-film"></i>
+                </span>
+            </button>
+        </a>
+    </p>
+    <br><br>
+    <div class="movie-type-class">
+        <h3>
+            I want to watch
+            <i class="fas fa-video"></i>
+        </h3>
+        {foreach $movies as $movie}
+            {if $movie->getSeen() === 0}
+                <p><a n:href="Movie:edit, id => $movie->getId()">{$movie->getName()}</a></p>
+                {foreach $movie->getGenreNames() as $genreName}
+                    <button class="button-13" role="button">{$genreName}</button>
+                {/foreach}
+                <br><br>
+                <p id="production-class">
+                    ({$movie->getCountryOfOrigin()}
+                    {$movie->getReleaseYear()})
+                </p>
+            {/if}
+        {/foreach}
+    </div>
+
+    <div class="movie-type-class">
+        <h3>
+            I've seen
+            <i class="far fa-check-square"></i>
+        </h3>
+        {foreach $movies as $movie}
+            {if $movie->getSeen() === 1}
+                <p><a n:href="Movie:edit, id => $movie->getId()">{$movie->getName()}</a></p>
+                {foreach $movie->getGenreNames() as $genreName}
+                    <button class="button-13" role="button">{$genreName}</button>
+                {/foreach}
+                <br><br>
+                <p id="production-class">
+                    ({$movie->getCountryOfOrigin()}
+                    {$movie->getReleaseYear()})
+                </p>
+                <div class="stars-rating">
+                    {for $i = 1; $i <= 5; $i++}
+                        <i class="fa fa-star fa-xs {if $i <= $movie->getRating()}checked{/if}"></i>
+                    {/for}
+                </div>
+            {/if}
+        {/foreach}
+    </div>
+</div>
