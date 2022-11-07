@@ -1,0 +1,62 @@
+{block content}
+
+<div class="movie-class">
+    <h1>Books - {$year}</h1>
+    <p>Number Of Read Books: {$numberOfReadBooks}</p>
+    <p>
+        <a n:href="ReadBook:create, year => $year">
+            <button class="button-57" role="button">
+                <span class="text">Add Book</span>
+                <span>
+                    <i class="fas fa-book"></i>
+                    <i class="fas fa-glasses"></i>
+                </span>
+            </button>
+        </a>
+    </p>
+    <br><br>
+    <div class="movie-type-class">
+        <h3>
+            I want to read
+            <i class="fas fa-book"></i>
+        </h3>
+        {foreach $readBooks as $book}
+            {if $book->getRead() === 0}
+                <p>
+                    <a n:href="ReadBook:edit, id => $book->getId()">{$book->getName()} -</a>
+                    {$book->getAuthor()}
+                    ({$book->getNumberOfPages()} pages)
+                </p>
+            {/if}
+        {/foreach}
+    </div>
+    <div class="movie-type-class">
+        <h3>
+            I've read
+            <i class="far fa-check-square"></i>
+        </h3>
+        {foreach $readBooks as $book}
+            {if $book->getRead() === 1}
+                <p>
+                    <a n:href="ReadBook:edit, id => $book->getId()">{$book->getName()} -</a>
+                    {$book->getAuthor()}
+                     {if $book->getBookReader() === 1}
+                        <i class="fas fa-tablet fa-xs"></i>
+                    {/if}
+                    ({$book->getNumberOfPages()} pages)
+                </p>
+                <p id="production-class">
+                    ({$book->getDateReadingStart() ? $book->getDateReadingStart()->format('d.m.Y') : ''} -
+                    {$book->getDateReadingEnd() ? $book->getDateReadingEnd()->format('d.m.Y') : ''})
+                </p>
+                <p>
+                    <div class="stars-rating">
+                        {for $i = 1; $i <= 5; $i++}
+                            <i class="fa fa-star fa-xs {if $i <= $book->getRating()}checked{/if}"></i>
+                        {/for}
+                    </div>
+                </p>
+            {/if}
+        {/foreach}
+    </div>
+</div>
