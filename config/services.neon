@@ -39,4 +39,5 @@ services:
 	- App\Model\MovieGenre\MovieGenreRepository
 	- App\FrontModule\Components\Forms\Movie\MovieFormFactory
 	- App\Model\Movie\MovieService
+	- App\Model\EntertainmentType\EntertainmentTypeRepository
 
