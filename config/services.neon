@@ -35,4 +35,5 @@ services:
 	- App\FrontModule\Components\Forms\Book\BookFormFactory
 	- App\Model\Genre\GenreRepository
 	- App\AdminModule\Components\Forms\Genre\GenreFormFactory
+	- App\Model\Movie\MovieRepository
 
