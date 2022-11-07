@@ -46,4 +46,5 @@ services:
 	- App\FrontModule\Components\Forms\Entertainment\EntertainmentFormFactory
 	- App\Model\TransportType\TransportTypeRepository
 	- App\AdminModule\Components\Forms\TransportType\TransportTypeFormFactory
+	- App\Model\TripTransport\TripTransportRepository
 
