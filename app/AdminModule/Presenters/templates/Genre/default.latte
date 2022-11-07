@@ -1,0 +1,33 @@
+{block content}
+
+<h1 class="mt-4">
+    Genres
+    <a n:href="Genre:create" class="btn btn-warning mb-2">Add</a>
+</h1>
+<div class="card mb-4">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>Genre</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach $genres as $genre}
+                    <tr>
+                        <td>{$genre->getName()}</td>
+                        <td>
+                            <a n:href="Genre:edit, id => $genre->getId()" class="btn btn-info mb-2">Edit</a>
+                            <a n:href="deleteGenre!, id => $genre->getId()" class="btn btn-dark mb-2">Delete</a>
+                        </td>
+                    </tr>
+                {/foreach}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
