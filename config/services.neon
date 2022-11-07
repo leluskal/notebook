@@ -44,4 +44,5 @@ services:
 	- App\Model\Entertainment\EntertainmentRepository
 	- App\Model\Entertainment\EntertainmentService
 	- App\FrontModule\Components\Forms\Entertainment\EntertainmentFormFactory
+	- App\Model\TransportType\TransportTypeRepository
 
