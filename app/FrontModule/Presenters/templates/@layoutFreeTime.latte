@@ -9,26 +9,26 @@
     <script src="https://kit.fontawesome.com/7cd3503c9e.js" crossorigin="anonymous"></script>
 
 
-    <title>{ifset title}{include title|stripHtml} | {/ifset}Intro</title>
+    <title>{ifset title}{include title|stripHtml} | {/ifset}Free Time</title>
 </head>
 <body>
 
-<header id="introduction-navigation-bar">
-    <div class="intro-navigation-container">
+<header id="free-time">
+    <nav class="nav-area-free-time">
         <ul>
             <li>
-                <a n:href="Planning:default">Planning</a>
-            </li>
-            <li>
-                <a n:href="FreeTime:default">Free Time</a>
+                <a n:href="Introduction:default"><i class="fas fa-home"></i></a>
             </li>
 {*            <li>*}
-{*                <a n:href="Eating:default">Eating</a>*}
+{*                <a n:href="ReadBook:default">Read Books</a>*}
 {*            </li>*}
-{*            <li><a n:href="NewHome:default">Podivínov</a></li>*}
-{*            <li><a n:href="Planning:default">Planning</a></li>*}
 {*            <li>*}
-{*                <a n:href="Avatar:default"><i class="fas fa-user"></i></a>*}
+{*                <a n:href="Entertainment:default">Entertainment</a>*}
+{*            </li>*}
+{*            <li><a n:href="Trip:default">Trips</a>*}
+{*                <ul>*}
+{*                    <li><a n:href="Destination:default">Destinations</a></li>*}
+{*                </ul>*}
 {*            </li>*}
             <li>
                 <a n:href=":Admin:Homepage:default"><i class="fas fa-tools"></i></a>
@@ -37,18 +37,13 @@
                 <a n:href="logout!"><i class="fas fa-sign-out-alt"></i></a>
             </li>
         </ul>
-    </div>
-    <div class="year-form-block">
-        {form yearForm}
-            {input year}
-            {input save}
-        {/form}
-    </div>
+    </nav>
 </header>
 
-<div id="introduction-background">
-    <h1 class="introduction-title">Hello</h1>
-</div>
+{foreach $flashes as $flash}
+    <p class="flash text-center text-white bg-{$flash->type}">{$flash->message}</p>
+{/foreach}
+{include content}
 
 </body>
 </html>
