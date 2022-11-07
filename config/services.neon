@@ -41,4 +41,6 @@ services:
 	- App\Model\Movie\MovieService
 	- App\Model\EntertainmentType\EntertainmentTypeRepository
 	- App\AdminModule\Components\Forms\EntertainmentType\EntertainmentTypeFormFactory
+	- App\Model\Entertainment\EntertainmentRepository
+	- App\Model\Entertainment\EntertainmentService
 
