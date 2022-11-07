@@ -33,4 +33,5 @@ services:
 	- App\FrontModule\Components\Forms\ShoppingCart\ShoppingCartFormFactory
 	- App\Model\Book\BookRepository
 	- App\FrontModule\Components\Forms\Book\BookFormFactory
+	- App\Model\Genre\GenreRepository
 
