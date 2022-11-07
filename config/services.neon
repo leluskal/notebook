@@ -31,6 +31,6 @@ services:
 	- App\FrontModule\Components\Forms\OutsideFood\OutsideFoodFormFactory
 	- App\Model\ShoppingCart\ShoppingCartRepository
 	- App\FrontModule\Components\Forms\ShoppingCart\ShoppingCartFormFactory
-	- App\Model\ReadBook\ReadBookRepository
-	- App\FrontModule\Components\Forms\ReadBook\ReadBookFormFactory
+	- App\Model\Book\BookRepository
+	- App\FrontModule\Components\Forms\Book\BookFormFactory
 

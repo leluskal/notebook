@@ -1,23 +1,23 @@
 <?php
 declare(strict_types=1);
 
-namespace App\FrontModule\Components\Forms\ReadBook;
+namespace App\FrontModule\Components\Forms\Book;
 
-use App\Model\ReadBook\ReadBookRepository;
+use App\Model\Book\BookRepository;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
 use Nette\Utils\ArrayHash;
 
-class ReadBookForm extends Control
+class BookForm extends Control
 {
     /**
-     * @var ReadBookRepository
+     * @var BookRepository
      */
-    private $readBookRepository;
+    private $bookRepository;
 
-    public function __construct(ReadBookRepository $readBookRepository)
+    public function __construct(BookRepository $bookRepository)
     {
-        $this->readBookRepository = $readBookRepository;
+        $this->bookRepository = $bookRepository;
     }
 
     public function createComponentForm(): Form
@@ -63,13 +63,13 @@ class ReadBookForm extends Control
     public function formSuccess(Form $form, ArrayHash $values)
     {
         if ($form['delete']->isSubmittedBy()) {
-            $this->readBookRepository->deleteById((int) $values->id);
+            $this->bookRepository->deleteById((int) $values->id);
             $this->getPresenter()->flashMessage('The record of book is deleted', 'info');
-            $this->getPresenter()->redirect('ReadBook:default');
+            $this->getPresenter()->redirect('Book:default');
         }
 
         if ($values->id === '') {
-            $this->readBookRepository->create([
+            $this->bookRepository->create([
                 'name' => $values->name,
                 'author' => $values->author,
                 'number_of_pages' => $values->number_of_pages,
@@ -95,17 +95,17 @@ class ReadBookForm extends Control
                 'rating' => $values->rating !== '' ? $values->rating : null
             ];
 
-            $this->readBookRepository->updateById($id, $data);
+            $this->bookRepository->updateById($id, $data);
             $this->getPresenter()->flashMessage('The record of book is updated', 'info');
         }
 
-        $this->getPresenter()->redirect('ReadBook:default');
+        $this->getPresenter()->redirect('Book:default');
     }
 
     public function render()
     {
         $template = $this->getTemplate();
-        $template->setFile(__DIR__ .'/readBookForm.latte');
+        $template->setFile(__DIR__ .'/bookForm.latte');
         $template->render();
     }
 }

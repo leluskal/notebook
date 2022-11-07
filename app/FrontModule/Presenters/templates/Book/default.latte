@@ -4,7 +4,7 @@
     <h1>Books - {$year}</h1>
     <p>Number Of Read Books: {$numberOfReadBooks}</p>
     <p>
-        <a n:href="ReadBook:create, year => $year">
+        <a n:href="Book:create, year => $year">
             <button class="button-57" role="button">
                 <span class="text">Add Book</span>
                 <span>
@@ -20,10 +20,10 @@
             I want to read
             <i class="fas fa-book"></i>
         </h3>
-        {foreach $readBooks as $book}
+        {foreach $books as $book}
             {if $book->getRead() === 0}
                 <p>
-                    <a n:href="ReadBook:edit, id => $book->getId()">{$book->getName()} -</a>
+                    <a n:href="Book:edit, id => $book->getId()">{$book->getName()} -</a>
                     {$book->getAuthor()}
                     ({$book->getNumberOfPages()} pages)
                 </p>
@@ -35,10 +35,10 @@
             I've read
             <i class="far fa-check-square"></i>
         </h3>
-        {foreach $readBooks as $book}
+        {foreach $books as $book}
             {if $book->getRead() === 1}
                 <p>
-                    <a n:href="ReadBook:edit, id => $book->getId()">{$book->getName()} -</a>
+                    <a n:href="Book:edit, id => $book->getId()">{$book->getName()} -</a>
                     {$book->getAuthor()}
                      {if $book->getBookReader() === 1}
                         <i class="fas fa-tablet fa-xs"></i>

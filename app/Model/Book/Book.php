@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Model\ReadBook;
+namespace App\Model\Book;
 
-class ReadBook
+class Book
 {
     /**
      * @var int
