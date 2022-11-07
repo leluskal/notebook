@@ -1,0 +1,46 @@
+{block content}
+
+<div class="entertainment-class">
+    <h1>Entertainment - {$year}</h1>
+    <p>
+        <a n:href="Entertainment:create, year => $year">
+            <button class="button-57" role="button">
+                <span class="text">Add Record</span>
+                <span>
+                    <i class="fas fa-video"></i>
+                    <i class="fas fa-microphone"></i>
+                    <i class="fas fa-bowling-ball"></i>
+                </span>
+            </button>
+        </a>
+    </p>
+    <br>
+    {foreach $months as $number => $month}
+        <span id="month">
+            <button class="button-33-e" role="button"><a n:href="Entertainment:default, month => $month">{$month}</a></button>
+        </span>
+    {/foreach}
+    <br><br>
+    <br><br>
+    {foreach $entertainments as $month => $entertainmentData}
+        <h3>{$month}</h3>
+        {foreach $entertainmentData as $entertainment}
+            <br>
+            <p id="entertainment-type">
+                {$entertainment->getDate()->format('d.m.Y')} -
+                {$entertainment->getEntertainmentType()->getName()}
+            </p>
+            <p>{$entertainment->getDetails()}</p>
+            <div class="stars-rating">
+                {for $i = 1; $i <= 5; $i++}
+                    <i class="fa fa-star fa-xs {if $i <= $entertainment->getRating()}checked{/if}"></i>
+                {/for}
+            </div>
+            <p>
+                <a n:href="Entertainment:edit, id => $entertainment->getId()"><i class="fas fa-edit fa-xs"></i></a>
+                <a n:href="deleteEntertainment!, id => $entertainment->getId()"><i class="fas fa-trash fa-xs"></i></a>
+            </p>
+        {/foreach}
+    {/foreach}
+
+</div>
