@@ -1,0 +1,69 @@
+{block content}
+
+<div class="destination-class">
+    <h1>Trips Tips</h1>
+    <p>
+        <a n:href="Destination:create">
+            <button class="button-57" role="button">
+                <span class="text">Add Record</span>
+                <span>
+                    <i class="fas fa-city"></i>
+                    <i class="fas fa-water"></i>
+                    <i class="fas fa-tree"></i>
+                </span>
+            </button>
+        </a>
+    </p>
+    {foreach $destinationTypes as $type}
+        <span>
+            <a n:href="Destination:default, destinationTypeId => $type->getId()" class="season-button">
+                {$type->getName()}
+            </a>
+        </span>
+    {/foreach}
+    <br><br>
+    <h2 id="destination-type-heading">
+        {if $destinationType !== null}
+            {$destinationType->getName()}
+        {/if}
+    </h2>
+    <div class="destination-type-class">
+        <h3>
+            Unvisited
+            <i class="fas fa-walking"></i>
+        </h3>
+        {ifset $destinationByTypes}
+            {foreach $destinationByTypes as $destination}
+                {if $destination->getVisited() === 0}
+                    <p>
+                        <a n:href="Destination:edit, id => $destination->getId()">
+                            <b>{$destination->getName()}</b>
+                        </a>
+                    </p>
+                    <p><i>({$destination->getNearbyCity()})</i></p>
+                    <p><i class="fas fa-home"></i> <i class="fas fa-arrow-right fa-xs"></i>{$destination->getDistanceFromHome()} km</i></p>
+                    <p id="destination-detail">{$destination->getDetails()}</p>
+                {/if}
+            {/foreach}
+        {/ifset}
+    </div>
+    <div class="destination-type-class">
+        <h3>
+            Visited
+            <i class="far fa-check-square"></i>
+        </h3>
+        {ifset $destinationByTypes}
+            {foreach $destinationByTypes as $destination}
+                {if $destination->getVisited() === 1}
+                    <p>
+                        <a n:href="Destination:edit, id => $destination->getId()">
+                            <b>{$destination->getName()}</b>
+                        </a>
+                    </p>
+                    <p><i>({$destination->getNearbyCity()})</i></p>
+                    <p><i class="fas fa-home"></i> <i class="fas fa-arrow-right fa-xs"></i>{$destination->getDistanceFromHome()} km</i></p>
+                {/if}
+            {/foreach}
+        {/ifset}
+    </div>
+</div>

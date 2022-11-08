@@ -53,4 +53,5 @@ services:
 	- App\Model\DestinationType\DestinationTypeRepository
 	- App\AdminModule\Components\Forms\DestinationType\DestinationTypeFormFactory
 	- App\Model\Destination\DestinationRepository
+	- App\FrontModule\Components\Forms\Destination\DestinationFormFactory
 
