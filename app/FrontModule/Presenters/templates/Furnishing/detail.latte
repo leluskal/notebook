@@ -1,0 +1,50 @@
+{block content}
+
+<div class="furnishing-class">
+    <h1 id="furnishing-name">{$furnishing->getName()}</h1>
+    <p>
+        <a n:href="Furnishing:default">Back</a>
+    </p>
+    <p>
+        <a n:href="FurnishingLink:create, furnishingId => $furnishing->getId()">
+            <button class="button button4">Add Links</button>
+        </a>
+    </p>
+    <p>
+        <a n:href="Furnishing:detail, furnishingId => $furnishing->getId(), type => 'toBuy'" class="season-button">
+            Options
+        </a>
+        <a n:href="Furnishing:detail, furnishingId => $furnishing->getId(), type => 'purchased'" class="season-button">
+            Purchased Furnishing
+        </a>
+    </p>
+    <br>
+    {if $type === 'toBuy'}
+        <h3>Options:</h3>
+        <br>
+        {foreach $furnishingLinks as $link}
+            <div class="furnishing-link-class">
+                <div class="link-part"><b><a href="{$link->getLink()}" target="_blank">{$link->getLinkName()}</a></b></div>
+                <div class="link-part">{$link->getShop()}</div>
+                <div class="link-part">{number_format($link->getPrice(), 0, '', ' ')} czk</div>
+                <div class="link-part">{$link->getRoom()->getName()}</div>
+                <div class="link-part"> <a n:href="FurnishingLink:edit, id => $link->getId()"><i class="fas fa-edit fa-xs"></i></a></div>
+            </div>
+            <br>
+        {/foreach}
+    {/if}
+    {if $type === 'purchased'}
+        <h3>Purchased Furnishing:</h3>
+        <br>
+        {foreach $furnishingLinks as $link}
+            <div class="furnishing-link-class">
+                <div class="link-part"><b><a href="{$link->getLink()}">{$link->getLinkName()}</a></b></div>
+                <div class="link-part">{$link->getShop()}</div>
+                <div class="link-part">{number_format($link->getPrice(), 0, '', ' ')} czk</div>
+                <div class="link-part">{$link->getRoom()->getName()}</div>
+                <div class="link-part">{$link->getDateOfPurchase()->format('d.m.Y')}</div>
+                <div class="link-part"><a n:href="FurnishingLink:edit, id => $link->getId()"><i class="fas fa-edit fa-xs"></i></a></div>
+             </div>
+        {/foreach}
+    {/if}
+</div>

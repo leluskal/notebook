@@ -1,0 +1,36 @@
+{block content}
+
+<div class="furnishing-class">
+    <h1>Furnishings</h1>
+    <p>
+        {if $furnishingCategoryId !== null}
+            <a n:href="Furnishing:create, furnishingCategoryId => $furnishingCategoryId">
+                <button class="button button4">Add Furnishing</button>
+            </a>
+        {/if}
+    </p>
+    {foreach $furnishingCategories as $category}
+        <span>
+            <a n:href="Furnishing:default, furnishingCategoryId => $category->getId()" class="season-button">
+                {$category->getName()}
+            </a>
+        </span>
+    {/foreach}
+    <br><br>
+    {ifset $furnishingByCategories}
+        {foreach $furnishingByCategories as $furnishing}
+            <p>
+                <a n:href="Furnishing:edit, id => $furnishing->getId()">
+                    {$furnishing->getName()}
+                </a>
+                {if $furnishing->getNote() !== null}
+                    ({$furnishing->getNote()})
+                {/if}
+                <a n:href="Furnishing:detail, furnishingId => $furnishing->getId()">
+                    <button class="button button4">detail</button>
+                </a>
+            </p>
+        {/foreach}
+    {/ifset}
+</div>
+
