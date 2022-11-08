@@ -69,7 +69,6 @@ class FurnishingPresenter extends BasePresenter
 
         $this->template->furnishingCategories = $this->furnishingCategoryRepository->findAll();
         $this->template->furnishingCategoryId = $furnishingCategoryId;
-
     }
 
     public function createComponentFurnishingForm(): FurnishingForm
