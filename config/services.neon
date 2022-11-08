@@ -72,4 +72,5 @@ services:
 	- App\Model\Recipe\RecipeRepository
 	- App\FrontModule\Components\Forms\Recipe\RecipeFormFactory
 	- App\Model\RecipePart\RecipePartRepository
+	- App\FrontModule\Components\Forms\RecipePart\RecipePartFormFactory
 
