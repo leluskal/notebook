@@ -55,4 +55,5 @@ services:
 	- App\Model\Destination\DestinationRepository
 	- App\FrontModule\Components\Forms\Destination\DestinationFormFactory
 	- App\Model\FurnishingCategory\FurnishingCategoryRepository
+	- App\AdminModule\Components\Forms\FurnishingCategory\FurnishingCategoryFormFactory
 
