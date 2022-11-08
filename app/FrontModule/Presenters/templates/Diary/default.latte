@@ -1,0 +1,32 @@
+{block content}
+
+<div class="diary-class">
+    <h1>Diary - {$year}</h1>
+    {foreach $months as $number => $month}
+        <span id="month">
+            <button class="button-33" role="button"><a n:href="Diary:default, month => $month">{$month}</a></button>
+        </span>
+    {/foreach}
+    <br><br>
+    <p>
+        <a n:href="Diary:create, year => $year"><span>
+            <button type="button" class="btn btn-outline-light text-dark">Add Record</button>
+        </a>
+    </p>
+    <br><br><br>
+    {foreach $diaries as $month => $diaryData}
+    <h3 id="diary-month-heading">{$month}</h3>
+        <br>
+        {foreach $diaryData as $diary}
+            <h3>
+                <a n:href="Diary:edit, id => $diary->getId()">
+                    {$diary->getHeading()}
+                </a>
+            </h3>
+            <br>
+            <p id="text">
+                {$diary->getNotes()}
+            </p>
+        {/foreach}
+    {/foreach}
+</div>
