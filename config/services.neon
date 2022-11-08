@@ -63,4 +63,5 @@ services:
 	- App\Model\Room\RoomRepository
 	- App\AdminModule\Components\Forms\Room\RoomFormFactory
 	- App\FrontModule\Components\Forms\FurnishingLink\FurnishingLinkFormFactory
+	- App\Model\FurnishingExpense\FurnishingExpenseRepository
 
