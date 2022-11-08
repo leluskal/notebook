@@ -50,4 +50,5 @@ services:
 	- App\Model\Trip\TripRepository
 	- App\FrontModule\Components\Forms\Trip\TripFormFactory
 	- App\Model\Trip\TripService
+	- App\Model\DestinationType\DestinationTypeRepository
 
