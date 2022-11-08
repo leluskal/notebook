@@ -77,4 +77,6 @@ services:
 	- App\Model\RecipePartIngredient\RecipePartIngredientRepository
 	- App\Model\RecipePartIngredient\RecipePartIngredientService
 	- App\FrontModule\Components\Forms\RecipePartIngredient\RecipePartIngredientFormFactory
+	- App\Model\RecipePartMethod\RecipePartMethodRepository
+	- App\Model\RecipePartMethod\RecipePartMethodService
 
