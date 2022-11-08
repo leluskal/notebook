@@ -13,17 +13,25 @@
 </head>
 <body>
 
-<nav class="nav-area-eating">
+<header id="eating">
+    <nav class="nav-area-eating">
         <ul>
             <li><a n:href="Introduction:default"><i class="fas fa-home"></i></a></li>
             <li><a n:href="Ingredient:default">Ingredients</a></li>
             <li><a n:href="Recipe:default">Recipes</a></li>
-            <li><a n:href=":Admin:Homepage:default"><i class="fas fa-tools"></i></a></li>
+        </ul>
+    </nav>
+    <nav class="nav-area-eating">
+        <ul>
+            <li>
+                <a n:href=":Admin:Homepage:default"><i class="fas fa-tools"></i></a>
+            </li>
             <li>
                 <a n:href="logout!"><i class="fas fa-sign-out-alt"></i></a>
             </li>
         </ul>
-</nav>
+    </nav>
+</header>
 
 {foreach $flashes as $flash}
     <p class="flash text-center text-white bg-{$flash->type}">{$flash->message}</p>

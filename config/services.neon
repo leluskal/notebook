@@ -80,4 +80,5 @@ services:
 	- App\Model\RecipePartMethod\RecipePartMethodRepository
 	- App\Model\RecipePartMethod\RecipePartMethodService
 	- App\FrontModule\Components\Forms\RecipePartMethod\RecipePartMethodFormFactory
+	- App\Model\Diary\DiaryRepository
 
