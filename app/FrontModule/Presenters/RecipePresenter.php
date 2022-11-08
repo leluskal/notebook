@@ -8,7 +8,6 @@ use App\FrontModule\Components\Forms\Recipe\RecipeFormFactory;
 use App\Model\Recipe\RecipeRepository;
 use App\Model\RecipeCategory\RecipeCategoryRepository;
 use App\Model\RecipePart\RecipePartRepository;
-use App\Model\RecipePartIngredient\RecipePartIngredientRepository;
 use App\Model\RecipePartIngredient\RecipePartIngredientService;
 use App\Model\RecipePartMethod\RecipePartMethodService;
 
@@ -35,11 +34,6 @@ class RecipePresenter extends BasePresenter
     private $recipePartRepository;
 
     /**
-     * @var RecipePartIngredientRepository
-     */
-    private $recipePartIngredientRepository;
-
-    /**
      * @var RecipePartIngredientService
      */
     private $recipePartIngredientService;
@@ -54,7 +48,6 @@ class RecipePresenter extends BasePresenter
         RecipeFormFactory $recipeFormFactory,
         RecipeCategoryRepository $recipeCategoryRepository,
         RecipePartRepository $recipePartRepository,
-        RecipePartIngredientRepository $recipePartIngredientRepository,
         RecipePartIngredientService $recipePartIngredientService,
         RecipePartMethodService $recipePartMethodService
     )
@@ -63,7 +56,6 @@ class RecipePresenter extends BasePresenter
         $this->recipeFormFactory = $recipeFormFactory;
         $this->recipeCategoryRepository = $recipeCategoryRepository;
         $this->recipePartRepository = $recipePartRepository;
-        $this->recipePartIngredientRepository = $recipePartIngredientRepository;
         $this->recipePartIngredientService = $recipePartIngredientService;
         $this->recipePartMethodService = $recipePartMethodService;
 
