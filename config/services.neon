@@ -60,4 +60,5 @@ services:
 	- App\FrontModule\Components\Forms\Furnishing\FurnishingFormFactory
 	- App\Model\FurnishingLink\FurnishingLinkRepository
 	- App\Model\FurnishingLink\FurnishingLinkService
+	- App\Model\Room\RoomRepository
 
