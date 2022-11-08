@@ -70,4 +70,6 @@ services:
 	- App\Model\Ingredient\IngredientRepository
 	- App\FrontModule\Components\Forms\Ingredient\IngredientFormFactory
 	- App\Model\Recipe\RecipeRepository
+	- App\FrontModule\Components\Forms\Recipe\RecipeFormFactory
+	- App\Model\RecipePart\RecipePartRepository
 

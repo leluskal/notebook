@@ -1,0 +1,49 @@
+{block content}
+
+<div class="recipe-class">
+    <h1>Recipes</h1>
+    <p>
+        {if $recipeCategoryId !== null}
+            <a n:href="Recipe:create, recipeCategoryId => $recipeCategoryId">
+                <button type="button" class="btn btn-outline-light text-dark btn-sm">Add Recipe</button>
+            </a>
+        {/if}
+    </p>
+
+    {foreach $recipeCategories as $recipeCategory}
+        <span>
+        <a n:href="Recipe:default, recipeCategoryId => $recipeCategory->getId()" class="recipe-button">
+            {$recipeCategory->getName()}
+        </a>
+    </span>
+    {/foreach}
+    <br><br><br>
+     {if $recipeCategoryId === 1}
+        <h3><i class="fas fa-drumstick-bite"></i></h3>
+    {/if}
+    {if $recipeCategoryId === 2}
+        <h3><i class="fas fa-seedling"></i></h3>
+    {/if}
+    {if $recipeCategoryId === 3}
+        <h3><i class="fas fa-cookie"></i></h3>
+    {/if}
+    {if $recipeCategoryId === 4}
+        <h3><i class="fas fa-wine-bottle"></i></h3>
+    {/if}
+    {if $recipeCategoryId === 6}
+        <h3><i class="fas fa-child"></i></h3>
+    {/if}
+     {if $recipeCategoryId === 7}
+        <h3><i class="fas fa-candy-cane"></i></h3>
+    {/if}
+    <br>
+    {ifset $recipes}
+        {foreach $recipes as $recipe}
+            <p>
+                {if $recipe->getNewRecipe() === 1}<i class="fas fa-utensils fa-s"></i>{/if}
+                <a n:href="Recipe:detail, recipeId => $recipe->getId()"><b>{$recipe->getName()}</b></a>
+                <a n:href="Recipe:edit, id => $recipe->getId()"><i>(edit)</i></a>
+            </p>
+        {/foreach}
+    {/ifset}
+</div>

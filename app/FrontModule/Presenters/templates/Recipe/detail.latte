@@ -1,0 +1,66 @@
+{block content}
+
+<div class="recipe-detail">
+    <h2>
+        <a n:href="Recipe:edit, id => $recipe->getId()">{$recipe->getName()}</a>
+    </h2>
+    <p id="recipe-part-method">{$recipe->getNote()}</p>
+    <p>
+        <div class="stars-rating">
+            {for $i = 1; $i <= 5; $i++}
+                <i class="fa fa-star fa-xs {if $i <= $recipe->getRating()}checked{/if}"></i>
+            {/for}
+        </div>
+    </p>
+    <p>
+        {if $recipe->getImagePath() !== ''}
+            <img id="image-upload" src="{$basePath . $recipe->getImagePath()}">
+        {/if}
+    </p>
+    <p>
+        <a n:href="RecipePart:create, recipeId => $recipe->getId()">
+            <button class="button-38" role="button">Add Recipe Part</button>
+        </a>
+        <a n:href="RecipePartIngredient:create, recipeId => $recipe->getId()">
+            <button class="button-38" role="button">Add Ingredients</button>
+        </a>
+        <a n:href="RecipePartMethod:create, recipeId => $recipe->getId()">
+            <button class="button-38" role="button">Add Method</button>
+        </a>
+    </p>
+    <br>
+    <div class="recipe-detail-ingredients">
+        <h3>Ingredients <i class="fas fa-utensils"></i></h3>
+        <br>
+        {foreach $recipePartIngredients as $key => $ingredientsData}
+            {var $keyParts = explode('-', $key)}
+            {var $recipePartName = $keyParts[0]}
+            {var $recipePartId = $keyParts[1]}
+            <h5 id="recipe-part-title">
+                {$recipePartName}
+                <a n:href="RecipePart:edit, id => $recipePartId"><i class="fas fa-edit fa-xs"></i></a>
+            </h5>
+            {foreach $ingredientsData as $ingredient}
+                <p>
+                    <a n:href="RecipePartIngredient:edit, recipeId => $recipe->getId(), id => $ingredient->getId()">
+                        {$ingredient->getAmount()}
+                        {$ingredient->getIngredient()->getName()}
+                    </a>
+                </p>
+            {/foreach}
+        {/foreach}
+    </div>
+    <hr>
+    {foreach $recipePartMethods as $recipePart => $methodsData}
+        <h5 id="recipe-part-title">{$recipePart}</h5>
+        {foreach $methodsData as $method}
+            <p id="recipe-part-method">
+                <a n:href="RecipePartMethod:edit, recipeId => $recipe->getId(), id => $method->getId()">
+                {$method->getSort()}.
+                {$method->getMethod()}
+            </p>
+        {/foreach}
+    {/foreach}
+
+</div>
+
