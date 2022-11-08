@@ -68,4 +68,5 @@ services:
 	- App\Model\RecipeCategory\RecipeCategoryRepository
 	- App\AdminModule\Components\Forms\RecipeCategory\RecipeCategoryFormFactory
 	- App\Model\Ingredient\IngredientRepository
+	- App\FrontModule\Components\Forms\Ingredient\IngredientFormFactory
 

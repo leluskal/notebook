@@ -1,0 +1,18 @@
+{block content}
+
+<div class="ingredient-class">
+    <h1>Ingredients</h1>
+    <a n:href="Ingredient:create">
+        <button class="button-38" role="button">Add Ingredient</button>
+    </a>
+        <p>
+            {foreach $sortedIngredients as $firstCharacter => $ingredientData}
+                <h3>{$firstCharacter}</h3>
+                {foreach $ingredientData as $ingredient}
+                    <p>
+                        <a n:href="Ingredient:edit, id => $ingredient->getId()">{$ingredient->getName()}</a>
+                    </p>
+                {/foreach}
+            {/foreach}
+        </p>
+</div>
