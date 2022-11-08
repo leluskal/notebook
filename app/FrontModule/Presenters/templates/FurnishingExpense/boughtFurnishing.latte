@@ -1,0 +1,13 @@
+{block content}
+
+<div class="furnishing-expense-class">
+    <h1>Purchased Furnishings</h1>
+    <br><br>
+    {foreach $boughtFurnishings as $furnishing}
+        <p>
+            <a href="{$furnishing->getLink()}">{$furnishing->getFurnishing()->getName()}</a> -
+            {number_format($furnishing->getPrice(), 0, '', ' ')} czk
+            <i>({$furnishing->getDateOfPurchase()->format('d.m.Y')})</i>
+        </p>
+    {/foreach}
+</div>

@@ -1,0 +1,27 @@
+{block content}
+
+<div class="furnishing-expense-class">
+    <h1>Expenses</h1>
+    <p>
+        <a n:href="FurnishingExpense:create"><button class="button button4">Add Expense</button></a>
+    </p>
+    {foreach $furnishingExpenses as $expense}
+        <p>
+            <a n:href="FurnishingExpense:edit, id => $expense->getId()">{$expense->getFurnishings()}:</a>
+            {number_format($expense->getPrice(), 0, '', ' ')} czk
+            {if $expense->getNote() !== null}
+                <i class="fas fa-pen-nib fa-xs"></i>
+            {/if}
+        </p>
+    {/foreach}
+    <div class="hr"><hr /></div>
+    <p>
+        <a n:href="FurnishingExpense:boughtFurnishing">
+            furnishings: {number_format($linksSpentMoney, 0, '', ' ')} czk
+        </a>
+    </p>
+    <br>
+    <hr>
+    <p><b>Total Spent Money: {number_format($linksSpentMoney + $furnishingsSpentMoney, 0, '', ' ')} czk</b></p>
+</div>
+
