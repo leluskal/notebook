@@ -65,4 +65,5 @@ services:
 	- App\FrontModule\Components\Forms\FurnishingLink\FurnishingLinkFormFactory
 	- App\Model\FurnishingExpense\FurnishingExpenseRepository
 	- App\FrontModule\Components\Forms\FurnishingExpense\FurnishingExpenseFormFactory
+	- App\Model\RecipeCategory\RecipeCategoryRepository
 
