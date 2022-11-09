@@ -1,0 +1,75 @@
+{block content}
+
+<div class="day-plan-class">
+    <h1>{$day} - {$dateTime|date:'l'}</h1>
+    <p>
+        <a n:href="DayType:create, year => $year">
+            <button class="button-11" role="button">Add Day Type</button>
+        </a>
+        <a n:href="WeekPlan:create, year => $year">
+            <button class="button-11" role="button">Add Task</button>
+        </a>
+        <a n:href="Note:create, year => $year">
+            <button class="button-11" role="button">Add Notes</button>
+        </a>
+    </p>
+    <br>
+    {foreach $dayTypes as $dayType}
+        <span>
+            <b><a n:href="DayType:edit, id => $dayType->getId()">{$dayType->getName()}</b></a>
+        </span>
+        <br><br>
+        <h3>{if $dayType->getWorkDay() === 1}Before Work{/if}</h3>
+        {foreach $tasks as $task}
+            <p>
+                {if $task->getTaskCategory()->getName() === 'before work'}
+                    {if $task->getDone() === 0}  <i class="far fa-square"></i>
+                    {else} <i class="far fa-check-square"></i>
+                    {/if}
+                    <a n:href="Task:edit, id => $task->getId()">{$task->getName()}</a>
+                {/if}
+            </p>
+        {/foreach}
+        <h3>{if $dayType->getWorkDay() === 1}After Work{/if}</h3>
+        {foreach $tasks as $task}
+            <p>
+                {if $task->getTaskCategory()->getName() === 'after work'}
+                    {if $task->getDone() === 0}  <i class="far fa-square"></i>
+                    {else} <i class="far fa-check-square"></i>
+                    {/if}
+                    <a n:href="Task:edit, id => $task->getId()">{$task->getName()}</a>
+                {/if}
+            </p>
+        {/foreach}
+    {/foreach}
+    <hr>
+    <br><br>
+    {foreach $notes as $note}
+        <h3>
+            <i>
+                {if $note->getQuote() === 1}
+                    <a n:href="Note:edit, id => $note->getId()">{$note->getText()}</a>
+                {/if}
+            </i>
+        </h3>
+    {/foreach}
+    <br><br>
+    <h3>To Do</h3>
+    {foreach $tasks as $task}
+        <p>
+            {if $task->getTaskCategory()->getName() === 'random'}
+                {if $task->getDone() === 1}<span><i class="fas fa-check fa-xs"></i></span>{/if}
+                <a n:href="Task:edit, id => $task->getId()">{$task->getName()}</a>
+            {/if}
+        </p>
+    {/foreach}
+    <hr>
+    <br>
+    <h3>Daily Notes</h3>
+    <br>
+    {foreach $notes as $note}
+        {if $note->getQuote() === 0}
+            <p id="text"><a n:href="Note:edit, id => $note->getId()">{$note->getText()}</a></p>
+        {/if}
+    {/foreach}
+</div>

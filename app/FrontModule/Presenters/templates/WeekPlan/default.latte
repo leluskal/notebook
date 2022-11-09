@@ -1,0 +1,15 @@
+{block content}
+
+<h1 class="title">Planning</h1>
+<h2 class="title">Weeks Of The Year {$year}</h2>
+{foreach $allWeeks as $weekNumber => $formattedWeekRange}
+    {if $iterator->getCounter() % 18 == 0 || $iterator->getCounter() == 1}
+        <div class="column-date">
+    {/if}
+    <p>
+        <a n:href="WeekPlan:detailWeek, weekNumber => $weekNumber">{$formattedWeekRange}</a>
+    </p>
+    {if $iterator->getCounter() % 18 == 17 || $iterator->isLast()}
+        </div>
+    {/if}
+{/foreach}

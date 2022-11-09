@@ -1,0 +1,60 @@
+{block content}
+
+<div class="week-plan-class">
+    <h1>{$weekRangeString}</h1>
+    <button type="button" class="btn btn-outline-light text-dark btn-sm">
+        <a n:href="WeekPlan:default">Back</a>
+    </button>
+    <br><br>
+    {foreach $weekRangeDateTimes as $dayName => $dateTime}
+        <span>
+            <button class="button-33" role="button"><a n:href="WeekPlan:detailDay, day => $dateTime->format('Y-m-d')">{$dayName}</a></button>
+        </span>
+    {/foreach}
+    <br><br>
+    <div id="create-button">
+        <p>
+            <a n:href="WeeklyToDo:create, weekNumber => $weekNumber, year => $year">
+                <button class="button-11" role="button">Add Weekly Task</button>
+            </a>
+            <a n:href="WeeklyNote:create, weekNumber => $weekNumber, year => $year">
+                <button class="button-11" role="button">Add Weekly Note</button>
+            </a>
+        </p>
+    </div>
+    <br>
+    <div class="week-block-plans">
+        <h4 class="week-plan-title">Week Plan</h4>
+        {foreach $weeklyNotes as $weeklyNote}
+            <p id="text">
+                <a n:href="WeeklyNote:edit, id => $weeklyNote->getId()">{$weeklyNote->getPlan()}</a>
+            </p>
+        {/foreach}
+    </div>
+    <div class="week-block-reality">
+        <h4 class="week-reality-title">Week Reality</h4>
+        {foreach $weeklyNotes as $weeklyNote}
+            <p id="text">
+                <a n:href="WeeklyNote:edit, id => $weeklyNote->getId()">{$weeklyNote->getReality()}</a>
+            </p>
+        {/foreach}
+    </div>
+    <h3>To Do:</h3>
+    {foreach $weeklyToDos as $weeklyToDo}
+        <p>
+            {if $weeklyToDo->getDone() === 1}<span><i class="fas fa-check fa-xs"></i></span>{/if}
+            <a n:href="WeeklyToDo:edit, id => $weeklyToDo->getId()">{$weeklyToDo->getTask()}</a>
+            {if $weeklyToDo->getNote() !== null}<span><i class="fas fa-pen-nib fa-xs"></i></span>{/if}
+        </p>
+    {/foreach}
+    <br><br>
+    <hr>
+    <h3>Week Rating:</h3>
+    {foreach $weeklyNotes as $weeklyNote}
+        <div class="stars-rating">
+            {for $i = 1; $i <= 5; $i++}
+                <i class="fa fa-star fa-xs {if $i <= $weeklyNote->getRating()}checked{/if}"></i>
+            {/for}
+        </div>
+    {/foreach}
+</div>
