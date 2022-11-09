@@ -1,0 +1,99 @@
+{block content}
+
+<div class="avatar-class">
+    <h1>
+        {$previousDate->format('d.m.Y')}
+        <a n:href="Avatar:default, selectedDate => $previousDate->format('Y-m-d')">
+            <i class="fas fa-arrow-left fa-xs"></i>
+        </a>
+        <b>{$actualDate->format('d.m.Y')}</b>
+        <a n:href="Avatar:default, selectedDate => $nextDate->format('Y-m-d')">
+            <i class="fas fa-arrow-right fa-xs"></i>
+        </a>
+        {$nextDate->format('d.m.Y')}
+    </h1>
+    {foreach $dailyEatings as $dailyEating}
+        <span id="day-type-avatar">({$dailyEating->getDayType()})</span>
+    {/foreach}
+    <div class="thought-bubbles">
+        {foreach $dailyStretchings as $dailyStretching}
+            {if $dailyStretching->getStretchTime() !== null}
+                <div class="thought-stretching">
+                     <a n:href="DailyStretching:default">
+                         <span>stretching: {$dailyStretching->getStretchTime()} min</span>
+                     </a>
+                </div>
+            {/if}
+        {/foreach}
+        {foreach $dailyEatings as $dailyEating}
+            {if $dailyEating->getCalorieNumber() !== null}
+                <div class="thought-eating">
+                    <a n:href="DailyEating:default">
+                        <span>{$dailyEating->getCalorieNumber()} kcal</span>
+                    </a>
+                </div>
+            {/if}
+        {/foreach}
+        {foreach $dailyNumberOfSteps as $dailyNumberOfStep}
+            {if $dailyNumberOfStep->getNumber() !== null}
+                <div class="thought-workout">
+                     <a n:href="DailyWorkout:default">
+                        <span>{$dailyNumberOfStep->getNumber()} steps</span>
+                    </a>
+                </div>
+            {/if}
+        {/foreach}
+        {foreach $dailyProgrammings as $dailyProgramming}
+            {if $dailyProgramming->getProgrammingDuration() !== null}
+                <div class="thought-programming">
+                    <a n:href="DailyProgramming:default">
+                        <span>programming: {$dailyProgramming->getProgrammingDuration()} min</span>
+                    </a>
+                </div>
+            {/if}
+        {/foreach}
+        {if $dailyWorkoutTime !== 0}
+            <div class="thought-workout">
+                <a n:href="DailyWorkout:default">
+                    <span>workout: {$dailyWorkoutTime} min</span>
+                </a>
+            </div>
+        {/if}
+        {if $mobileSpentTime !== 0}
+            <div class="thought-mobile">
+                <a n:href="DailyMobile:default">
+                    <span>mobile: {$mobileSpentTime} min</span>
+                </a>
+                {foreach $dailyMobiles as $dailyMobile}
+                    <span>
+                    + {$dailyMobile->getNumberOfScreenUnlocks()}x
+                     <i class="fas fa-unlock fa-xs"></i>
+                </span>
+                {/foreach}
+            </div>
+        {/if}
+        {if $percentageFaceCare !== 0.0}
+            <div class="thought-care">
+                <a n:href="DailyBodyCare:default">
+                    <span>body care: {number_format($percentageFaceCare, 1, ',', ' ')}%</span>
+                </a>
+            </div>
+        {/if}
+        {if $mobileSpentTime !== 0}
+            <div class="thought-mobile">
+                <a n:href="DailySleeping:default">
+                    {foreach $dailySleepings as $dailySleeping}
+                        {var $diff = $dailySleeping->getTimeGetUp()->diff($dailySleeping->getTimeGoToBed())}
+                        <span>sleeping: {$diff->format('%h hod %i min')}</span>
+                    {/foreach}
+                </a>
+            </div>
+        {/if}
+    </div>
+    <div id="avatar-image">
+        <img src="{$basePath}/img/avatar.png">
+    </div>
+
+</div>
+
+
