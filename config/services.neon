@@ -85,4 +85,5 @@ services:
 	- App\Model\TaskCategory\TaskCategoryRepository
 	- App\AdminModule\Components\Forms\TaskCategory\TaskCategoryFormFactory
 	- App\Model\Task\TaskRepository
+	- App\FrontModule\Components\Forms\Task\TaskFormFactory
 
