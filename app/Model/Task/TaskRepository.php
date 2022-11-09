@@ -56,16 +56,16 @@ class TaskRepository extends BaseRepository
         return $tasks;
     }
 
-    public function findAllByCreated($created): array
+    public function findAll(): array
     {
-        $rows = $this->getDbConnection()->query('SELECT * FROM task WHERE created = ?', $created)->fetchAll();
+        $rows = $this->getDbConnection()->query('SELECT * FROM task')->fetchAll();
 
         return $this->mapRowsToObjects($rows);
     }
 
-    public function findAllByYear(int $year): array
+    public function findAllByCreated($created): array
     {
-        $rows = $this->getDbConnection()->query('SELECT * FROM task WHERE year = ?', $year)->fetchAll();
+        $rows = $this->getDbConnection()->query('SELECT * FROM task WHERE created = ?', $created)->fetchAll();
 
         return $this->mapRowsToObjects($rows);
     }

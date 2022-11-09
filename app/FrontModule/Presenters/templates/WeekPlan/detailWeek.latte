@@ -42,9 +42,9 @@
     <h3>To Do:</h3>
     {foreach $weeklyToDos as $weeklyToDo}
         <p>
-            {if $weeklyToDo->getDone() === 1}<span><i class="fas fa-check fa-xs"></i></span>{/if}
+            {if $weeklyToDo->getDone() === 1}<i class="fas fa-check fa-xs"></i>{/if}
             <a n:href="WeeklyToDo:edit, id => $weeklyToDo->getId()">{$weeklyToDo->getTask()}</a>
-            {if $weeklyToDo->getNote() !== null}<span><i class="fas fa-pen-nib fa-xs"></i></span>{/if}
+            {if $weeklyToDo->getNote() !== null}<i class="fas fa-pen-nib fa-xs"></i>{/if}
         </p>
     {/foreach}
     <br><br>
