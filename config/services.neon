@@ -83,4 +83,5 @@ services:
 	- App\Model\Diary\DiaryRepository
 	- App\FrontModule\Components\Forms\Diary\DiaryFormFactory
 	- App\Model\TaskCategory\TaskCategoryRepository
+	- App\AdminModule\Components\Forms\TaskCategory\TaskCategoryFormFactory
 
