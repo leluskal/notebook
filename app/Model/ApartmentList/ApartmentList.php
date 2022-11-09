@@ -13,16 +13,16 @@ class ApartmentList
     /**
      * @var string
      */
-    private $name;
+    private $task;
 
     /**
      * @var int
      */
     private $done;
 
-    public function __construct(string $name, int $done)
+    public function __construct(string $task, int $done)
     {
-        $this->name = $name;
+        $this->task = $task;
         $this->done = $done;
     }
 
@@ -36,14 +36,14 @@ class ApartmentList
         $this->id = $id;
     }
 
-    public function getName(): string
+    public function getTask(): string
     {
-        return $this->name;
+        return $this->task;
     }
 
-    public function setName(string $name): void
+    public function setTask(string $task): void
     {
-        $this->name = $name;
+        $this->task = $task;
     }
 
     public function getDone(): int

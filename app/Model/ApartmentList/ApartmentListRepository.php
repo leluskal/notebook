@@ -21,7 +21,7 @@ class ApartmentListRepository extends BaseRepository
         }
 
         $apartmentList = new ApartmentList(
-            (string)$row->name,
+            (string)$row->task,
             (int)$row->done
         );
         $apartmentList->setId((int)$row->id);
@@ -42,7 +42,7 @@ class ApartmentListRepository extends BaseRepository
 
         foreach ($rows as $row) {
             $apartmentList = new ApartmentList(
-                (string)$row->name,
+                (string)$row->task,
                 (int)$row->done
             );
             $apartmentList->setId((int)$row->id);

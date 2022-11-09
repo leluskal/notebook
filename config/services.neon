@@ -96,4 +96,5 @@ services:
 	- App\FrontModule\Components\Forms\WeeklyNote\WeeklyNoteFormFactory
 	- App\Model\Task\TaskService
 	- App\Model\ApartmentList\ApartmentListRepository
+	- App\FrontModule\Components\Forms\ApartmentList\ApartmentListFormFactory
 

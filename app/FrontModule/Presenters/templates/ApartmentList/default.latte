@@ -1,0 +1,15 @@
+{block content}
+
+<div class="apartment-task-class">
+    <h1>Tasks</h1>
+    <a n:href="ApartmentList:create">
+        <button class="button-11" role="button">Add Task</button>
+    </a>
+    <br><br>
+    {foreach $apartmentLists as $list}
+        <p>
+            {if $list->getDone() === 1}<span><i class="fas fa-check fa-xs"></i></span>{/if}
+            <a n:href="ApartmentList:edit, id => $list->getId()">{$list->getTask()}</a>
+        </p>
+    {/foreach}
+</div>
