@@ -88,4 +88,5 @@ services:
 	- App\FrontModule\Components\Forms\Task\TaskFormFactory
 	- App\Model\Note\NoteRepository
 	- App\FrontModule\Components\Forms\Note\NoteFormFactory
+	- App\Model\DayType\DayTypeRepository
 
