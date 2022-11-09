@@ -92,4 +92,5 @@ services:
 	- App\FrontModule\Components\Forms\DayType\DayTypeFormFactory
 	- App\Model\WeeklyToDo\WeeklyToDoRepository
 	- App\FrontModule\Components\Forms\WeeklyToDo\WeeklyToDoFormFactory
+	- App\Model\WeeklyNote\WeeklyNoteRepository
 
