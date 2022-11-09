@@ -93,4 +93,5 @@ services:
 	- App\Model\WeeklyToDo\WeeklyToDoRepository
 	- App\FrontModule\Components\Forms\WeeklyToDo\WeeklyToDoFormFactory
 	- App\Model\WeeklyNote\WeeklyNoteRepository
+	- App\FrontModule\Components\Forms\WeeklyNote\WeeklyNoteFormFactory
 
