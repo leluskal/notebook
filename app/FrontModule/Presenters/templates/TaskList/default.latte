@@ -1,0 +1,53 @@
+{block content}
+
+<div class="day-plan-class">
+    <h1>Debilníček</h1>
+    <p>
+        <a n:href="TaskList:create">
+            <button class="button-57" role="button">
+                <span class="text">Add Task</span>
+                <span>
+                    <i class="fas fa-pen"></i>
+                    <i class="fas fa-list"></i>
+                </span>
+            </button>
+        </a>
+    </p>
+    {foreach $taskCategories as $category}
+        <a n:href="TaskList:default, taskCategoryId => $category->getId()">
+            {if $category->getName() === 'debilníček - nápady'
+            || $category->getName() === 'debilníček - odkazy'
+            ||  $category->getName() === 'debilníček - úlohy'
+            }
+                <span class="season-button">{$category->getName()}</span>
+            {/if}
+        </a>
+    {/foreach}
+    <br><br>
+    <h2 id="destination-type-heading">
+        {if $taskCategory !== null}
+            {$taskCategory->getName()}
+        {/if}
+    </h2>
+    {foreach $tasks as $task}
+        <p>
+            {if $task->getTaskCategory()->getName() === 'debilníček - nápady'
+                || $category->getName() === 'debilníček - odkazy'
+                ||  $category->getName() === 'debilníček - úlohy'}
+                {if $task->getTaskCategory()->getName() === 'debilníček - odkazy'}
+                    {if $task->getLink() !== null}
+                        <a href="{$task->getLink()}" target="_blank">{$task->getName()}</a>
+                        <a n:href="TaskList:edit, id => $task->getId()"><i class="fas fa-edit fa-xs"></i></a>
+                    {/if}
+                {/if}
+                {if $task->getTaskCategory()->getName() === 'debilníček - úlohy'}
+                    {if $task->getDone() === 1}<span><i class="fas fa-check fa-xs"></i></span>{/if}
+                {/if}
+                {if $task->getTaskCategory()->getName() === 'debilníček - nápady' || $task->getTaskCategory()->getName() === 'debilníček - úlohy' }
+                    <a n:href="TaskList:edit, id => $task->getId()">{$task->getName()}</a>
+                {/if}
+                {if $task->getNote() !== null}<span><i class="fas fa-pen-nib fa-xs"></i></span>{/if}
+            {/if}
+        </p>
+    {/foreach}
+</div>
